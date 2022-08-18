@@ -13,6 +13,7 @@ var HttpClient = function() {
 
         anHttpRequest.open("GET", aUrl, true);
         anHttpRequest.setRequestHeader('x-csrf-token', cSrf);       
+        anHttpRequest.setRequestHeader('Access-Control-Allow-Origin', '*');       
         anHttpRequest.setRequestHeader("Content-Type", "application/json; charset=utf-8");
         anHttpRequest.setRequestHeader("Accept", "application/json");
         anHttpRequest.setRequestHeader('Authorization', 'Bearer ' + token);
@@ -33,7 +34,8 @@ var HttpClientPost = function() {
         }
 
         anHttpRequest.open("POST", aUrl, true);
-        anHttpRequest.setRequestHeader('x-csrf-token', cSrf);       
+        anHttpRequest.setRequestHeader('x-csrf-token', cSrf);  
+        anHttpRequest.setRequestHeader('Access-Control-Allow-Origin', '*');          
         anHttpRequest.setRequestHeader("Content-Type", "application/json; charset=utf-8");
         anHttpRequest.setRequestHeader("Accept", "application/json");
         anHttpRequest.setRequestHeader('Authorization', 'Bearer ' + token);
