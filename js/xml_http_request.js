@@ -8,7 +8,9 @@ var HttpClient = function() {
             if (anHttpRequest.readyState == 4 && (anHttpRequest.status >= 400 && anHttpRequest.status <= 499))
                 aCallback(JSON.parse(anHttpRequest.responseText));
 
-                console.log(anHttpRequest)
+            if (anHttpRequest.readyState == 4 && (anHttpRequest.status >= 500 && anHttpRequest.status <= 599))
+                aCallback(JSON.parse(anHttpRequest.responseText));
+
         }
 
         anHttpRequest.open("GET", aUrl, true);
@@ -30,6 +32,9 @@ var HttpClientPost = function() {
                 aCallback(JSON.parse(anHttpRequest.responseText));
 
             if (anHttpRequest.readyState == 4 && (anHttpRequest.status >= 400 && anHttpRequest.status <= 499))
+                aCallback(JSON.parse(anHttpRequest.responseText));
+            
+            if (anHttpRequest.readyState == 4 && (anHttpRequest.status >= 500 && anHttpRequest.status <= 599))
                 aCallback(JSON.parse(anHttpRequest.responseText));
         }
 

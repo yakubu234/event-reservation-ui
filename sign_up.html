@@ -158,7 +158,7 @@ Already have an account?<a class="signup-link" href="sign_in.html">Sign In</a>
         $('#status').fadeIn();  
         $('#preloader').delay(150).fadeIn('slow');
         
-        csfr_msg
+        if(csfr_msg !== 'success')wait(3000)
 
         var client = new HttpClientPost();
         client.get(public_url+'/register',data, csfr_gen,null, (response) =>{
@@ -180,13 +180,12 @@ Already have an account?<a class="signup-link" href="sign_in.html">Sign In</a>
             }
 
             if(response.status == 'Success'){
-                response.message
-                // response.data.token
+                response.message//display this message
                 var data = response.data
                 delete data.user_details.id
                 data.user_details.uid
                 setWithExpiry(data.user_details.uid, data, 30)
-                URL_add_parameter(base_url()+'dashboard.html',data.user_details.uid)
+                URL_add_parameter(base_url()+'/dashboard.html',data.user_details.uid)
                 form.reset()
             }
             

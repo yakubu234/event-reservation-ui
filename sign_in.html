@@ -117,7 +117,8 @@ New to Barren?<a class="signup-link" href="sign_up.html">Sign up</a>
         $('#status').fadeIn();  
         $('#preloader').delay(150).fadeIn('slow');
         
-        csfr_msg
+        if(csfr_msg !== 'success')wait(3000)
+        
 
         var client = new HttpClientPost();
         client.get(public_url+'/signin',data, csfr_gen,null, (response) =>{
@@ -143,7 +144,7 @@ New to Barren?<a class="signup-link" href="sign_up.html">Sign up</a>
                 var data = response.data
                 delete data.user.id
                 setWithExpiry(data.user.uid, data, 30)
-                URL_add_parameter(base_url()+'dashboard.html',data.user.uid)
+                URL_add_parameter(base_url()+'/dashboard.html',data.user.uid)
                 form.reset()
             }
             

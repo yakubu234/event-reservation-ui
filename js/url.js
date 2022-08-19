@@ -40,7 +40,7 @@ function base_url() {
     var url = window.location.origin
     var pathparts = location.pathname.split('/');
     if (window.location.host == 'localhost') {
-         url = location.origin+'/'+pathparts[1].trim('/')+'/'; 
+         url = location.origin+'/'+pathparts[1].trim('/'); 
     }
 
     return url;

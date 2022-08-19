@@ -28,5 +28,13 @@ function setWithExpiry(key, value, ttl) {
 	localStorage.setItem(key, JSON.stringify(item))
 }
 
+/** the below code is to set wait period i.e set timeout (: */
+function wait(ms){
+	var start = new Date().getTime();
+	var end = start;
+	while(end < start + ms) {
+	  end = new Date().getTime();
+   }
+ }
 // token
 // uid
