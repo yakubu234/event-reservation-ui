@@ -1,17 +1,22 @@
 <script src="js/jquery-3.6.0.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="vendor/OwlCarousel/owl.carousel.js"></script>
 <script src="js/localstorage.js"></script>
-<!-- <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script> -->
-<!-- <script src="vendor/OwlCarousel/owl.carousel.js"></script> -->
-<!-- <script src="vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script> -->
-<!-- <script src="js/custom.js"></script> -->
-<!-- <script src="js/night-mode.js"></script> -->
-<!-- <script src="js/url.js"></script> -->
+<script src="js/xml_http_request.js"></script>
+<script src="vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+<script src="js/url.js"></script>
+<script src="js/custom.js"></script>
+<script src="js/night-mode.js"></script>
 
 <script>
 
-console.log('before'+new Date());
-wait(7000);  //7 seconds in milliseconds
-console.log('after'+new Date());
+var client = new HttpClient();
+        client.get('https://event-reservation-system.herokuapp.com/sanctum/csrf-cookie', '',null, (response) =>{
+            console.log(response)
+        });
+// console.log('before'+new Date());
+// wait(7000);  //7 seconds in milliseconds
+// console.log('after'+new Date());
 
 // setWithExpiry('ade','i am saving it here', 5)
 

@@ -112,47 +112,51 @@ New to Barren?<a class="signup-link" href="sign_up.html">Sign up</a>
     var form = document.getElementById('inputform')
     form.addEventListener('submit',function(event){
         event.preventDefault()
-        let data = serializeForm(form) 
 
-        $('#status').fadeIn();  
+        $('#status-loader').fadeIn();  
         $('#preloader').delay(150).fadeIn('slow');
+
+        let data = serializeForm(form,csfr_gen) 
         
-        if(csfr_msg !== 'success')wait(3000)
-        
+        var client = new HttpClient();
+		client.get('https://laravel-csrf-scrapper.herokuapp.com/csrf_scraper.php?url=' + encodedUrl,null,null, function(response) {
+		if(response.message !== 'success')alert('error here'); 
+            var clientpost = new HttpClientPost();
+            clientpost.get(public_url+'/signin',data, response.token,null, (response) =>{
+                console.log(response)
 
-        var client = new HttpClientPost();
-        client.get(public_url+'/signin',data, csfr_gen,null, (response) =>{
+                if(response.message == 'CSRF token mismatch.')alert(response.message)
 
-            if(response.errors){
-                d = response.errors
-                Object.keys(d).forEach(key => {// console.log(key, d[key]);
-                    if(key == 'password')document.querySelector('input[name|='+key+']').value='';
+                if(response.errors){
+                    d = response.errors
+                    Object.keys(d).forEach(key => {// console.log(key, d[key]);
+                        if(key == 'password')document.querySelector('input[name|='+key+']').value='';
 
-                    $(document).find('[name='+key+']').after('<span class="text-strong text-danger">' +d[key]+ '</span>')
+                        $(document).find('[name='+key+']').after('<span class="text-strong text-danger">' +d[key]+ '</span>')
+                    });
+                }
 
-                });
-            }
+                if(response.status == 'Error'){
+                    document.getElementById("errorss").innerHTML += '<span class="text-strong text-danger">' +response.message+ '</span>'
+                    // console.log(response.message)
+                }
 
-            if(response.status == 'Error'){
-                document.getElementById("errorss").innerHTML += '<span class="text-strong text-danger">' +response.message+ '</span>'
-                // console.log(response.message)
-            }
+                if(response.status == 'Success'){
+                    response.message
+                    response.data.token
+                    var data = response.data
+                    delete data.user.id
+                    setWithExpiry(data.user.uid, data, 30)
+                    URL_add_parameter(base_url()+'/dashboard.html',data.user.uid)
+                    form.reset()
+                }
+                
+                $('#status-loader').fadeOut(); 
+                $('#preloader').delay(350).fadeOut('slow');
+                $('body').delay(550).css({'overflow':'visible'});
+            });
 
-            if(response.status == 'Success'){
-                response.message
-                response.data.token
-                var data = response.data
-                delete data.user.id
-                setWithExpiry(data.user.uid, data, 30)
-                URL_add_parameter(base_url()+'/dashboard.html',data.user.uid)
-                form.reset()
-            }
-            
-
-            $('#status').fadeOut(); 
-            $('#preloader').delay(350).fadeOut('slow');
-            $('body').delay(550).css({'overflow':'visible'});
-        });
+		});
     })
 </script>
 </body>
