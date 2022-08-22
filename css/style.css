@@ -6605,10 +6605,10 @@ input[type=number]::-webkit-inner-spin-button {
     right:0;
     bottom:0;
     background-color:#fff;/* change if the mask should be a color other than white */
-    z-index:9999; /* makes sure it stays on top */
+    z-index:999; /* makes sure it stays on top */
   }
   
-  #status {
+  #status-loader {
     width:200px;
     height:200px;
     position:absolute;

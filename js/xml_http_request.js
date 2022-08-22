@@ -8,13 +8,17 @@ var HttpClient = function() {
             if (anHttpRequest.readyState == 4 && (anHttpRequest.status >= 400 && anHttpRequest.status <= 499))
                 aCallback(JSON.parse(anHttpRequest.responseText));
 
-                console.log(anHttpRequest)
+            if (anHttpRequest.readyState == 4 && (anHttpRequest.status >= 500 && anHttpRequest.status <= 599))
+                aCallback(JSON.parse(anHttpRequest.responseText));
+
         }
 
         anHttpRequest.open("GET", aUrl, true);
-        anHttpRequest.setRequestHeader('x-csrf-token', cSrf);       
-        anHttpRequest.setRequestHeader('Access-Control-Allow-Origin', '*');       
+        // anHttpRequest.withCredentials = true;    
+        anHttpRequest.setRequestHeader("X-Requested-With", "XMLHttpRequest");     
         anHttpRequest.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+        anHttpRequest.setRequestHeader('X-CSRF-TOKEN', cSrf);       
+        anHttpRequest.setRequestHeader('Access-Control-Allow-Origin', '*');            
         anHttpRequest.setRequestHeader("Accept", "application/json");
         anHttpRequest.setRequestHeader('Authorization', 'Bearer ' + token);
         anHttpRequest.send(null);
@@ -31,12 +35,16 @@ var HttpClientPost = function() {
 
             if (anHttpRequest.readyState == 4 && (anHttpRequest.status >= 400 && anHttpRequest.status <= 499))
                 aCallback(JSON.parse(anHttpRequest.responseText));
+            
+            if (anHttpRequest.readyState == 4 && (anHttpRequest.status >= 500 && anHttpRequest.status <= 599))
+                aCallback(JSON.parse(anHttpRequest.responseText));
         }
 
         anHttpRequest.open("POST", aUrl, true);
-        anHttpRequest.setRequestHeader('x-csrf-token', cSrf);  
-        anHttpRequest.setRequestHeader('Access-Control-Allow-Origin', '*');          
+        anHttpRequest.setRequestHeader("X-Requested-With", "XMLHttpRequest");
         anHttpRequest.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+        anHttpRequest.setRequestHeader('X-CSRF-TOKEN', cSrf);  
+        anHttpRequest.setRequestHeader('Access-Control-Allow-Origin', '*');          
         anHttpRequest.setRequestHeader("Accept", "application/json");
         anHttpRequest.setRequestHeader('Authorization', 'Bearer ' + token);
         anHttpRequest.send(data);
@@ -51,6 +59,8 @@ function serializeForm(form)
    for(let pair of rawData.entries()) {
      data[pair[0]] = pair[1]; 
     }
+
+    // data['_token'] = csrf
     return JSON.stringify(data);
 }
 

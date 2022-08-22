@@ -27,9 +27,8 @@ Index Of Script
 ----------------------------------------------*/
 
 
-$('#status').fadeOut(); 
-$('#preloader').delay(350).fadeOut('slow'); 
-$('body').delay(550).css({'overflow':'visible'});
+$('#status-loader').fadeIn();
+$('#preloader').delay(150).fadeIn('slow'); 
 
 /*base url for api*/
 let public_url = 'https://event-reservation-system.herokuapp.com/api';
@@ -654,9 +653,9 @@ function logForm(data)
 let csfr_gen;
 let csfr_msg;
 var encodedUrl = btoa(unescape(encodeURIComponent('https://event-reservation-system.herokuapp.com/')))
-var client = new HttpClient();
-client.get('https://laravel-csrf-scrapper.herokuapp.com/csrf_scraper.php?url=' + encodedUrl,null,null, function(response) {
-csfr_gen = response.token
-csfr_msg = response.message
- });
+// var client = new HttpClient();
+// client.get('https://laravel-csrf-scrapper.herokuapp.com/csrf_scraper.php?url=' + encodedUrl,null,null, function(response) {
+// csfr_gen = response.token
+// csfr_msg = response.message
+//  });
 

@@ -72,7 +72,7 @@
     </a>
     <ul class="dropdown-menu dropdown-submenu">
     <li><a class="dropdown-item" href="explore_events.html">Explore Events</a></li>
-    <li><a class="dropdown-item" href="event_detail.html">Venue Event Detail View</a></li>
+    <li><a class="dropdown-item" href="venue_event_detail_view.html">Venue Event Detail View</a></li>
     <li><a class="dropdown-item" href="online_event_detail_view.html">Online Event Detail View</a></li>
     </ul>
     </li> -->
@@ -129,7 +129,7 @@
     <a class="dropdown-item submenu-item" href="index.html#">Events View</a>
     <ul class="submenu dropdown-menu">
     <li><a class="dropdown-item pe-5" href="online_event_detail_view.html">Online Event Detail View</a></li>
-    <li><a class="dropdown-item pe-5" href="event_detail.html">Venue Event Detail View</a></li>
+    <li><a class="dropdown-item pe-5" href="venue_event_detail_view.html">Venue Event Detail View</a></li>
     </ul>
     </li>
     <li><a class="dropdown-item" href="booking_confirmed.html">Booking Confirmed</a></li>
@@ -162,10 +162,10 @@
     <ul class="align-self-stretch">
     <!--CREATE EVENT BUTTO SECTION STARTS HERE-->
     <li>
-    <button type="button" class="create-btn btn-hover" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <a href="create_event.html" class="create-btn btn-hover">
     <i class="fa-solid fa-calendar-days"></i>
     <span>Create Event</span>
-    </button>
+    </a>
     </li>
     <!--=====-->
     <li class="dropdown account-dropdown">
@@ -203,70 +203,6 @@
     </div>
     </header>
 
-    <!--==========> CREATE EVENT MODAL FORM STARTS HERE <==========-->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Create Event</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="mb-0 p-3">
-                      <label for="" class="form-label">Event Name<span class="text-danger">*</span></label>
-                      <input type="text" class="form-control" id="" required>
-                    </div>
-                    <div class="mb-0 p-3">
-                        <label for="" class="form-label">Location Address <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="">
-                      </div>
-                      <div class="mb-0 p-3">
-                        <label for="" class="form-label">Event Date<span class="text-danger">*</span></label>
-                        <input type="date" class="form-control" id="">
-                      </div>
-                      <div class="mb-3 p-3">
-                        <label for="" class="form-label">Type<span class="text-danger">*</span></label>
-                        <select class="form-select form-select-lg">
-                            <option selected>--- Select Event Type ---</option>
-                            <option value="">Paid</option>
-                            <option value="">Free</option>
-                        </select>
-                    </div>
-                      <div class="mb-0 p-3">
-                        <label for="" class="form-label">Start Time <span class="text-danger">*</span></label>
-                        <input type="time" class="form-control" id="">
-                      </div>
-                      <div class="mb-0 p-3">
-                        <label for="" class="form-label">End Time <span class="text-success fst-italic">(optional)</span></label>
-                        <input type="time" class="form-control" id="">
-                      </div>
-                    <div class="mb-0 p-3">
-                        <label for="" class="form-label">Media <span class="text-danger">*</span></label>
-                        <input type="file" class="form-control" id="" required>
-                      </div>
-                    <div class="mb-0 p-3">
-                      <label for="" class="form-label">Maximum Seats<span class="text-danger">*</span></label>
-                      <input type="number" class="form-control" id="" required>
-                    </div>
-                    <div class="mb-3 p-3">
-                        <label for="" class="form-label">Status <span class="text-danger">*</span></label>
-                        <select class="form-select form-select-lg">
-                            <option selected>--- Select Status ---</option>
-                            <option value="">Active</option>
-                            <option value="">Inactive</option>
-                        </select>
-                    </div>
-            </div>
-            <div class="modal-footer">
-              <button type="submit" class="btn btn-success">Submit</button>
-            </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    <!--==========> ENDS HERE <==========-->
-
     <div class="wrapper">
     <div class="hero-banner">
     <div class="container">
@@ -275,7 +211,7 @@
     <div class="hero-banner-content">
     <h2>..You think organize it, we get it sold out!</h2>
     <p>EventX is an all-in-one event ticketing platform for event organizers, promoters, and managers. Easily create, promote and manage your events of any type and size</p>
-    <a href="create.html" class="main-btn btn-hover">Create Event <i class="fa-solid fa-arrow-right ms-3"></i></a>
+    <a href="create_event.html" class="main-btn btn-hover">Create Event <i class="fa-solid fa-arrow-right ms-3"></i></a>
     </div>
     </div>
     </div>
@@ -323,12 +259,12 @@
     <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mix arts concert workshops volunteer sports health_Wellness" data-ref="mixitup-target">
     <div class="main-card mt-4">
         <div class="event-thumbnail">
-            <a href="event_detail.html" class="thumbnail-img">
+            <a href="venue_event_detail_view.html" class="thumbnail-img">
             <img src="images/event-imgs/img-1.jpg" alt="">
             </a>
         </div>
         <div class="event-content">
-            <a href="event_detail.html" class="event-title">Free Buffet</a>
+            <a href="venue_event_detail_view.html" class="event-title">Free Buffet</a>
             <div class="duration-price-remaining">
                 <span class="duration-price">Free*</span>
                 <span class="remaining"></span>
@@ -351,12 +287,12 @@
     <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mix arts concert workshops volunteer sports health_Wellness" data-ref="mixitup-target">
         <div class="main-card mt-4">
             <div class="event-thumbnail">
-                <a href="event_detail.html" class="thumbnail-img">
+                <a href="venue_event_detail_view.html" class="thumbnail-img">
                 <img src="images/event-imgs/img-1.jpg" alt="">
                 </a>
             </div>
             <div class="event-content">
-                <a href="event_detail.html" class="event-title">Love, Damini - Burna Boy</a>
+                <a href="venue_event_detail_view.html" class="event-title">Love, Damini - Burna Boy</a>
                 <div class="duration-price-remaining">
                     <span class="duration-price">AUD N10,000.00*</span>
                     <span class="remaining"><i class="fa-solid fa-ticket fa-rotate-90"></i>4 Remaining</span>
@@ -379,12 +315,12 @@
     <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mix arts concert workshops volunteer sports health_Wellness" data-ref="mixitup-target">
         <div class="main-card mt-4">
             <div class="event-thumbnail">
-                <a href="event_detail.html" class="thumbnail-img">
+                <a href="venue_event_detail_view.html" class="thumbnail-img">
                 <img src="images/event-imgs/img-1.jpg" alt="">
                 </a>
             </div>
             <div class="event-content">
-                <a href="event_detail.html" class="event-title">Love, Damini - Burna Boy</a>
+                <a href="venue_event_detail_view.html" class="event-title">Love, Damini - Burna Boy</a>
                 <div class="duration-price-remaining">
                     <span class="duration-price">AUD N10,000.00*</span>
                     <span class="remaining"><i class="fa-solid fa-ticket fa-rotate-90"></i>4 Remaining</span>
@@ -407,12 +343,12 @@
     <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mix arts concert workshops volunteer sports health_Wellness" data-ref="mixitup-target">
         <div class="main-card mt-4">
             <div class="event-thumbnail">
-                <a href="event_detail.html" class="thumbnail-img">
+                <a href="venue_event_detail_view.html" class="thumbnail-img">
                 <img src="images/event-imgs/img-1.jpg" alt="">
                 </a>
             </div>
             <div class="event-content">
-                <a href="event_detail.html" class="event-title">Free Buffet</a>
+                <a href="venue_event_detail_view.html" class="event-title">Free Buffet</a>
                 <div class="duration-price-remaining">
                     <span class="duration-price">Free*</span>
                     <span class="remaining"></span>
@@ -435,13 +371,13 @@
     <!-- <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mix concert sports health_Wellness free arts" data-ref="mixitup-target">
     <div class="main-card mt-4">
     <div class="event-thumbnail">
-    <a href="event_detail.html" class="thumbnail-img">
+    <a href="venue_event_detail_view.html" class="thumbnail-img">
     <img src="images/event-imgs/img-5.jpg" alt="">
     </a>
     <span class="bookmark-icon" title="Bookmark"></span>
     </div>
     <div class="event-content">
-    <a href="event_detail.html" class="event-title">Friday Night Dinner at The Old Station May 27 2022</a>
+    <a href="venue_event_detail_view.html" class="event-title">Friday Night Dinner at The Old Station May 27 2022</a>
     <div class="duration-price-remaining">
     <span class="duration-price">AUD $41.50*</span>
     <span class="remaining"></span>
@@ -464,13 +400,13 @@
     <!-- <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mix workshops concert arts volunteer sports" data-ref="mixitup-target">
     <div class="main-card mt-4">
     <div class="event-thumbnail">
-    <a href="event_detail.html" class="thumbnail-img">
+    <a href="venue_event_detail_view.html" class="thumbnail-img">
     <img src="images/event-imgs/img-6.jpg" alt="">
     </a>
     <span class="bookmark-icon" title="Bookmark"></span>
     </div>
     <div class="event-content">
-    <a href="event_detail.html" class="event-title">Step Up Open Mic Show</a>
+    <a href="venue_event_detail_view.html" class="event-title">Step Up Open Mic Show</a>
     <div class="duration-price-remaining">
     <span class="duration-price">AUD $200.00*</span>
     <span class="remaining"></span>
@@ -522,13 +458,13 @@
     <!-- <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mix sports concert volunteer arts" data-ref="mixitup-target">
     <div class="main-card mt-4">
     <div class="event-thumbnail">
-    <a href="event_detail.html" class="thumbnail-img">
+    <a href="venue_event_detail_view.html" class="thumbnail-img">
     <img src="images/event-imgs/img-8.jpg" alt="">
     </a>
     <span class="bookmark-icon" title="Bookmark"></span>
     </div>
     <div class="event-content">
-    <a href="event_detail.html" class="event-title">Trainee Program on Leadership' 2022</a>
+    <a href="venue_event_detail_view.html" class="event-title">Trainee Program on Leadership' 2022</a>
     <div class="duration-price-remaining">
     <span class="duration-price">AUD $120.00*</span>
     <span class="remaining"><i class="fa-solid fa-ticket fa-rotate-90"></i>7 Remaining</span>
