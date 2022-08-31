@@ -17,6 +17,7 @@
 <link href="css/style.css" rel="stylesheet">
 <link href="css/responsive.css" rel="stylesheet">
 <link href="css/night-mode.css" rel="stylesheet">
+<link href="css/alert.css" rel="stylesheet">
 
 <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
 <link href="vendor/OwlCarousel/assets/owl.carousel.css" rel="stylesheet">
@@ -25,11 +26,18 @@
 <link href="vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
 </head>
 <body>
+
+   
+
 <div class="form-wrapper">
+
 <div class="app-form">
 <div class="app-form-sidebar">
 <div class="sidebar-sign-logo">
+    <a href="index.html">
 <img src="images/sign-logo.svg" alt="">
+
+</a>
 </div>
 <div class="sign_sidebar_text">
 <h1>The Easiest Way to Create Events and Sell More Tickets Online</h1>
@@ -55,7 +63,13 @@ New to Barren?<a class="sidebar-register-link" href="sign_up.html">Sign up</a>
 <div class="registration">
 <form id="inputform">
 <h2 class="registration-title">Sign in to Barren</h2>
-<p id="errorss" ></p>
+
+<div class="alertdiv" id="alertdiv" ></div><!--alert div is here -->
+<!-- preloader -->
+<div id="preloader">
+    <div id="status-loader">&nbsp;</div>
+</div>
+<!-- preloader -->
 <div class="form-group mt-5">
 <label class="form-label">Email</label>
 <input class="form-control h_50" type="email" name="email" placeholder="Enter your email" value="">
@@ -109,6 +123,8 @@ New to Barren?<a class="signup-link" href="sign_up.html">Sign up</a>
 <script src="js/night-mode.js"></script>
 
 <script>
+    $('#status-loader').fadeOut();
+	$('#preloader').fadeOut();
     var form = document.getElementById('inputform')
     form.addEventListener('submit',function(event){
         event.preventDefault()
@@ -123,9 +139,10 @@ New to Barren?<a class="signup-link" href="sign_up.html">Sign up</a>
 		if(response.message !== 'success')alert('error here'); 
             var clientpost = new HttpClientPost();
             clientpost.get(public_url+'/signin',data, response.token,null, (response) =>{
-                console.log(response)
 
-                if(response.message == 'CSRF token mismatch.')alert(response.message)
+                if(response.message == 'CSRF token mismatch.'){
+					document.getElementById('alertdiv').innerHTML = '<div id="alertss" class="alertss alert__danger"><p class="alert__text"  style="color:white;">'+response.message+'</p><button class="close-button" onclick="closePop(this);" data-close-button="data-close-button"><div class="close-button__icon"></div></button> </div>';
+                }
 
                 if(response.errors){
                     d = response.errors
@@ -137,11 +154,13 @@ New to Barren?<a class="signup-link" href="sign_up.html">Sign up</a>
                 }
 
                 if(response.status == 'Error'){
-                    document.getElementById("errorss").innerHTML += '<span class="text-strong text-danger">' +response.message+ '</span>'
-                    // console.log(response.message)
+                    // alert(response.message)
+                    document.getElementById('alertdiv').innerHTML = '<div id="alertss" class="alertss alert__danger"><p class="alert__text" style="color:white;">'+response.message+'</p><button class="close-button"  onclick="closePop(this);" data-close-button="data-close-button"><div class="close-button__icon"></div></button> </div>';
                 }
 
                 if(response.status == 'Success'){
+
+					document.getElementById('alertdiv').innerHTML = '<div id="alertss" class="alertss alert__success"><p class="alert__text"  style="color:white;">'+response.message+'</p><button class="close-button" onclick="closePop(this);" data-close-button="data-close-button"><div class="close-button__icon"></div></button> </div>';
                     response.message
                     response.data.token
                     var data = response.data
@@ -151,13 +170,13 @@ New to Barren?<a class="signup-link" href="sign_up.html">Sign up</a>
                     form.reset()
                 }
                 
-                $('#status-loader').fadeOut(); 
-                $('#preloader').delay(350).fadeOut('slow');
-                $('body').delay(550).css({'overflow':'visible'});
+                $('#status-loader').fadeOut('slow');
+		        $('#preloader').fadeOut('slow');
             });
 
 		});
     })
 </script>
+<script src="js/alert.js" ></script>
 </body>
 </html>

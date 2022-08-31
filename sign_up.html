@@ -17,6 +17,7 @@
 <link href="css/style.css" rel="stylesheet">
 <link href="css/responsive.css" rel="stylesheet">
 <link href="css/night-mode.css" rel="stylesheet">
+<link href="css/alert.css" rel="stylesheet">
 
 <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
 <link href="vendor/OwlCarousel/assets/owl.carousel.css" rel="stylesheet">
@@ -52,6 +53,13 @@ Already have an account?<a class="sidebar-register-link" href="sign_in.html">Sig
 </div>
 </div>
 <div class="col-xl-5 col-lg-6 col-md-7">
+
+<div class="alertdiv" id="alertdiv" ></div><!--alert div is here -->
+<!-- preloader -->
+<div id="preloader">
+    <div id="status-loader">&nbsp;</div>
+</div>
+<!-- preloader -->
 <div class="registration" method="POST">
 <form id="inputform">
     <span id="errors"></span>
@@ -178,10 +186,13 @@ Already have an account?<a class="signup-link" href="sign_in.html">Sign In</a>
                 }
 
                 if(response.status == 'Error'){
-                    console.log(response.message)
+                    document.getElementById('alertdiv').innerHTML = '<div id="alertss" class="alertss alert__danger"><p class="alert__text" style="color:white;">'+response.message+'</p><button class="close-button"  onclick="closePop(this);" data-close-button="data-close-button"><div class="close-button__icon"></div></button> </div>';
                 }
 
                 if(response.status == 'Success'){
+
+					document.getElementById('alertdiv').innerHTML = '<div id="alertss" class="alertss alert__success"><p class="alert__text"  style="color:white;">'+response.message+'</p><button class="close-button" onclick="closePop(this);" data-close-button="data-close-button"><div class="close-button__icon"></div></button> </div>';
+
                     response.message//display this message
                     var data = response.data
                     delete data.user_details.id
@@ -194,12 +205,12 @@ Already have an account?<a class="signup-link" href="sign_in.html">Sign In</a>
 
                 $('#status').fadeOut(); 
                 $('#preloader').delay(350).fadeOut('slow');
-                $('body').delay(550).css({'overflow':'visible'});
             });
         });
 		
     })
 </script>
+<script src="js/alert.js" ></script>
 
 </body>
 </html>

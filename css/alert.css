@@ -1,0 +1,88 @@
+
+.alertdiv {
+    /* --clr: hsl(0, 0%, 100%); */
+    max-width: 80%;
+    /* width: auto; */
+    /* display: flex; */
+    gap: 0.5em;
+    /* border: 1px solid rgba(0, 0, 0, 0.1); */
+    /* padding: 1em; */
+    /* color: var(--clr); */
+    /* margin-inline: auto; */
+    /* justify-content: space-between; */
+    /* align-items: center; */
+    position: absolute;
+    top: 70px;
+    right:300px;
+    /* z-index: 9999; */
+}
+.alertss {
+  --clr: hsl(0, 0%, 100%);
+  /* min-width: 100px; */
+  width: auto;
+  display: flex;
+  gap: 0.5em;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 1em;
+  color: white;
+  margin-inline: auto;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  /* top: 50px;
+  right:50px;*/
+  z-index: 9999; 
+  
+}
+.alert__text {
+  letter-spacing: 1px;
+  font-size: 1rem;
+  font-weight: bold;
+}
+.alert__danger {
+  background-color: #f20d0d;
+}
+.alert__success {
+  background-color: #6abf40;
+}
+.alert__info {
+  background-color: #4095bf;
+}
+.alert__warning {
+  background-color: #f26c0d;
+}
+.alertss.hide-anim {
+  animation: hide 200ms linear forwards;
+}
+@keyframes hide {
+  to {
+    opacity: 0;
+  }
+}
+.alertss.hide {
+  display: none;
+}
+
+.close-button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+.close-button__icon {
+  display: grid;
+  position: relative;
+  width: 23px;
+  place-items: center;
+  aspect-ratio: 1;
+}
+.close-button__icon::before, .close-button__icon::after {
+  position: absolute;
+  width: 3px;
+  height: 80%;
+  rotate: 45deg;
+  content: "";
+  background-color: var(--clr);
+}
+.close-button__icon::after {
+  rotate: -45deg;
+}
