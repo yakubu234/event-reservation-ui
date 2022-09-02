@@ -641,7 +641,7 @@
             setWithExpiry(data.user.uid, data, 30); 
             setSessionWithExpiry(data.user.uid+"single", d[key], 30); 
                 if(data.user.uid == d[key].user.uid){
-                document.getElementById('edit-delete-button').innerHTML = '<a class="btn btn-danger" href="edit_event.html?val='+data.user.uid+'" ><i class="fa fa-trash" ></i></a> <a href="edit_event.html?val='+data.user.uid+'" class="btn btn-warning"> <i class="fa fa-pencil-square" ></i></a>';
+                document.getElementById('edit-delete-button').innerHTML = '<a class="btn btn-danger" href="edit_event.html?val='+data.user.uid+'" ><i class="fa fa-trash" ></i></a> <a href="edit_event.html" class="btn btn-warning"> <i class="fa fa-pencil-square" ></i></a>';
                 }
             }
         }

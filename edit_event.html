@@ -199,13 +199,13 @@
 <div class="form-group mt-4">
 <form id="inputform2">
 <label class="form-label">Event Name<span class="text-danger">*</span></label>
-<input class="form-control h_50" type="text" name="event_name" placeholder="" required>
+<input class="form-control h_50" type="text" name="event_name" id="input-event-name" placeholder="" required>
 </div>
 </div>
 <div class="col-lg-6 col-md-12">
 <div class="form-group mt-4">
 <label class="form-label">Location (Address) <span class="text-danger">*</span></label>
-<input class="form-control h_50" type="text" name="location" placeholder="" required>
+<input class="form-control h_50" type="text" name="location" id="input-location" placeholder="" required>
 </div>
 </div>
 
@@ -220,7 +220,7 @@
 <div class="col-lg-6 col-md-12">
     <div class="form-group mt-4">
     <label class="form-label">Event date <span class="text-danger">*</span></label>
-    <input class="form-control h_50" type="date" name="event_date" placeholder="" required>
+    <input class="form-control h_50" type="date" name="event_date" id="input-date" placeholder="" required>
     </div>
     </div>
     <div class="col-lg-6 col-md-12">
@@ -236,16 +236,26 @@
         <div class="col-lg-6 col-md-12">
             <div class="form-group mt-4">
             <label class="form-label">Start Time <span class="text-danger">*</span></label>
-            <input class="form-control h_50" type="time" name="start_time" placeholder="" required>
+            <input class="form-control h_50" type="time" name="start_time" id="start-time" placeholder="" required>
             </div>
             </div>
             <div class="col-lg-6 col-md-12">
                 <div class="form-group mt-4">
                 <label class="form-label">Maximum Seats <span class="text-danger">*</span></label>
-                <input class="form-control h_50" type="number" name="maximun_seats" placeholder="" required>
+                <input class="form-control h_50" type="number" id="input-maximum-seats" name="maximun_seats" placeholder="" required>
                 </div>
                 </div>
-        <div class="col-lg-12 col-md-12">
+                <div class="col-lg-6 col-md-12">
+                    <div class="form-group mt-4">
+                    <label class="form-label"> Event Status<span class="text-danger">*</span></label>
+                    <select class="form-select form-select-lg" name="type" id="eventStatus" required>
+                        <option selected>--- Select Event Type ---</option>
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                    </select>
+                    </div>
+                    </div>
+        <div class="col-lg-6 col-md-12">
             <div class="form-group mt-4">
                 <label class="form-label">Media <span class="text-danger">*</span></label>
                 <input type="file" class="form-control" id="fileinput" name="file" accept="jpg">
@@ -359,7 +369,7 @@ $('#preloader').delay(350).fadeOut('slow');
 if (!url_val|| url_val.length < 20) window.location.replace('sign_in.html')
 
 data = getWithExpiry(url_val) 
-
+// console.log(data)
 if(data == null || typeof data !== 'object' )window.location.replace('sign_in.html')// treet thisas special
 
 userToken = data.token
@@ -367,8 +377,18 @@ document.getElementById('loggedin_name').innerHTML = data.user.first_name + " " 
 document.getElementById('loggedin_email').innerHTML = data.user.email
 const uid = data.user.uid
 
-var eventDetails = getSessionWithExpiry(url_val); 
+let eventDetails = getSessionWithExpiry(url_val+"single"); 
 console.log(eventDetails)
+
+document.getElementById('description').value = eventDetails.description
+document.getElementById('input-date').value = eventDetails.event_date
+document.getElementById('input-event-name').value = eventDetails.event_name
+document.getElementById('input-location').value = eventDetails.location
+document.getElementById('input-maximum-seats').value = eventDetails.maximun_seats
+document.getElementById('start-time').value = eventDetails.start_time
+document.getElementById('numberToSelect').value = eventDetails.type
+document.getElementById('eventStatus').value = eventDetails.status
+
 
 var form = document.getElementById('inputform2')
     form.addEventListener('submit',function(event){
@@ -382,6 +402,10 @@ var form = document.getElementById('inputform2')
         for (var i = 0; i < inputs.length; i++) {
 
             if (fields_type.includes(inputs[i].getAttribute('type'))) {
+
+                if(inputs[i].value == eventDetails.event_name){
+                    continue;
+                }
                 formData.append(inputs[i].getAttribute('name'), inputs[i].value);            
             }
 
@@ -412,9 +436,9 @@ var form = document.getElementById('inputform2')
 
         var client = new HttpClient();
 		client.get('https://laravel-csrf-scrapper.herokuapp.com/csrf_scraper.php?url=' + encodedUrl,null,null, function(response) {
-		if(response.message !== 'success')alert('error here'); 
+		if(response.message !== 'success'){}
             var clientpost = new HttpClientPostUpload();
-            clientpost.get(public_url+'/event/create',formData, response.token,userToken, (response) =>{
+            clientpost.get(public_url+'/event/update',formData, response.token,userToken, (response) =>{
                 if(response.errors){
                     d = response.errors
                     Object.keys(d).forEach(key => {
