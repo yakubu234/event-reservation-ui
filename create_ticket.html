@@ -68,9 +68,9 @@
         <a class="nav-link active" aria-current="page" href="index.html">Home</a>
         </li>
         
-        <li class="nav-item">
-        <a class="nav-link" href="create_ticket.html">create Ticket</a>
-        </li>
+<li class="nav-item">
+    <a class="nav-link" href="explore_events.html"> Explore Events</a>
+    </li>
         
         <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="index.html#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -189,43 +189,39 @@
 <h4>Ticket Creation</h4>
 </div>
 <div class="bp-content bp-form">
+    <form id="inputform3">
 <div class="row">
-<div class="col-lg-6 col-md-12">
+<!-- <div class="col-lg-6 col-md-12">
 <div class="form-group mt-4">
-<form>
+
 <label class="form-label">Event Id</label>
 <input class="form-control h_50" type="text" placeholder="" readonly>
 </div>
-</div>
+</div> -->
 <div class="col-lg-6 col-md-12">
 <div class="form-group mt-4">
 <label class="form-label">Amount <span class="text-danger">*</span></label>
-<input class="form-control h_50" type="number" placeholder="">
+<input class="form-control h_50" type="number" name="amount" placeholder="">
 </div>
 </div>
-<div class="col-lg-12 col-md-12">
+<div class="col-lg-6 col-md-12">
 <div class="form-group mt-4">
 <label class="form-label">Type <span class="text-danger">*</span></label>
-<select class="form-select form-select-lg">
+<select class="form-select form-select-lg" name="type" id="numberToSelect">
     <option selected>--- Select Event Type ---</option>
-    <option value="">Gold</option>
-    <option value="">Silver</option>
-    <option value="">Plantinum</option>
+    <option value="regular">Regular</option>
+    <option value="gold">Gold</option>
+    <option value="silver">Silver</option>
+    <option value="platinum">Plantinum</option>
 </select>
 </div>
 </div>
 <div class="col-lg-12 col-md-12">
 <div class="form-group mt-4">
 <label class="form-label">Maximum Seats <span class="text-danger">*</span></label>
-<input class="form-control h_50" type="number" placeholder="">
+<input class="form-control h_50" type="number" name="maximum_reservation" placeholder="">
 </div>
 </div>
-<!-- <div class="col-lg-6 col-md-12">
-<div class="form-group mt-4">
-<label class="form-label">State*</label>
-<input class="form-control h_50" type="text" placeholder="" value="">
-</div>
-</div> -->
 
 <div class="col-lg-12 col-md-12">
 <div class="form-group mt-4">
@@ -321,7 +317,7 @@
 </div>
 </footer>
 
-<script data-cfasync="false" src="../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="js/jquery-3.6.0.min.js"></script>
+<script src="js/jquery-3.6.0.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="vendor/OwlCarousel/owl.carousel.js"></script>
 
@@ -337,7 +333,85 @@ document.getElementById('alertdiv').innerHTML = '<div id="alertss" class="alerts
 </script>
 
 <script>
+if (!url_val|| url_val.length < 20) window.location.replace('sign_in.html')
 
+data = getWithExpiry(url_val)
+var event_id = url_val 
+
+if(data == null || typeof data !== 'object' )window.location.replace('sign_in.html')// treet thisas special
+
+tokenable = getWithExpiry(data.user.uid) /*get the user data in local storage*/
+setWithExpiry(data.user.uid, tokenable, 30) /*reset the data in local storage*/
+
+url_val = tokenable.user.uid
+userToken = tokenable.token
+document.getElementById('loggedin_name').innerHTML = tokenable.user.first_name + " " +tokenable.user.last_name
+document.getElementById('loggedin_email').innerHTML = tokenable.user.email
+
+
+
+var form = document.getElementById('inputform3')
+    form.addEventListener('submit',function(event){
+        event.preventDefault()
+
+        $('#status-loader').fadeIn();  
+        $('#preloader').delay(150).fadeIn('slow');
+        var formData = new FormData();
+
+        const fields_type = ['text', 'number', 'date', 'time', 'email'];
+        var inputs = document.getElementsByTagName("input");
+        for (var i = 0; i < inputs.length; i++) {
+
+            if (fields_type.includes(inputs[i].getAttribute('type'))) {
+                formData.append(inputs[i].getAttribute('name'), inputs[i].value);            
+            }
+        }
+
+        strUser = document.getElementById("numberToSelect").value;
+        formData.append("type", strUser);
+        formData.append("event_id", event_id);
+
+        
+        var client = new HttpClient();
+		client.get('https://laravel-csrf-scrapper.herokuapp.com/csrf_scraper.php?url=' + encodedUrl,null,null, function(response) {
+		if(response.message !== 'success')alert('error here'); 
+            var clientpost = new HttpClientPostUpload();
+            clientpost.get(public_url+'/event/create-ticket',formData, response.token,userToken, (response) =>{
+
+                console.log(response)
+                if(response.message == 'CSRF token mismatch.'){
+					document.getElementById('alertdiv').innerHTML = '<div id="alertss" class="alertss alert__danger"><p class="alert__text"  style="color:white;">'+response.message+'</p><button class="close-button" onclick="closePop(this);" data-close-button="data-close-button"><div class="close-button__icon"></div></button> </div>';
+                }
+
+                if(response.errors){
+                    d = response.errors
+                    Object.keys(d).forEach(key => {// console.log(key, d[key]);
+                        $(document).find('[name='+key+']').after('<span class="text-strong text-danger">' +d[key]+ '</span>')
+                    });
+                }
+
+                if(response.status == 'Error'){
+                    document.getElementById('alertdiv').innerHTML = '<div id="alertss" class="alertss alert__danger"><p class="alert__text" style="color:white;">'+response.message+'</p><button class="close-button"  onclick="closePop(this);" data-close-button="data-close-button"><div class="close-button__icon"></div></button> </div>';
+                }
+
+                if(response.status == 'Success'){
+
+					document.getElementById('alertdiv').innerHTML = '<div id="alertss" class="alertss alert__success"><p class="alert__text"  style="color:white;">'+response.message+'. Redirecting to the dashboard .</p><button class="close-button" onclick="closePop(this);" data-close-button="data-close-button"><div class="close-button__icon"></div></button> </div>';
+                    response.message
+                    // var data = response.data
+                    // delete data.user.id
+                    // setWithExpiry(data.user.uid, data, 30)
+                    // URL_add_parameter(base_url()+'/dashboard.html',data.user.uid)
+                    // form.reset()
+                }
+                
+                $('#status-loader').fadeOut('slow');
+		        $('#preloader').fadeOut('slow');
+                $('body').delay(550).css({'overflow':'visible'});
+            });
+
+		});
+    })
 </script>
 
 <script src="js/links.js" ></script>

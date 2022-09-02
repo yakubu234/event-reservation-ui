@@ -69,8 +69,9 @@
 </li>
 
 <li class="nav-item">
-<a class="nav-link" href="create_ticket.html">create Ticket</a>
+<a class="nav-link" href="explore_events.html"> Explore Events</a>
 </li>
+
 
 <li class="nav-item dropdown">
 <a class="nav-link dropdown-toggle" href="index.html#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -430,8 +431,6 @@ Help
 <script src="js/custom.js"></script>
 <script src="js/night-mode.js"></script>
 <script>	
-      $('#status-loader').fadeOut();
-	$('#preloader').fadeOut();
 		var containerEl = document.querySelector('[data-ref~="event-filter-content"]');
         var mixer = mixitup(containerEl, {
             selectors: {
@@ -451,8 +450,6 @@ Help
     document.getElementById('loggedin_email').innerHTML = data.user.email
 
         var client = new HttpClient();
-        $('#status-loader').delay(350).fadeIn();  
-        $('#preloader').delay(400).fadeIn('slow');
         client.get(public_url+'/event/my-events', csfr_gen,token, (response) =>{
 
             if(response.exception){
