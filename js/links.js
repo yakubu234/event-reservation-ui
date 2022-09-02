@@ -9,5 +9,12 @@ var remove_links = document.querySelectorAll('a[href*="index.html#"]');
         remove_links[i].setAttribute("href", (remove_links[i].getAttribute("href").split('?')[0]));
     }
 
-$('#status-loader').fadeOut(); 
-$('#preloader').delay(350).fadeOut('slow');
+    // function addParams(event_id, ){
+    //     var links = document.querySelectorAll('a[href*="event_detail.html"]');
+    // for(var i = 0; i < links.length; i++) {
+    //     links[i].setAttribute("href", links[i].getAttribute("href")+"?raw="+event_id+"?val="+url_val);
+    // } 
+    // }
+
+// $('#status-loader').fadeOut(); 
+// $('#preloader').delay(350).fadeOut('slow');

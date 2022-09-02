@@ -157,7 +157,8 @@ Already have an account?<a class="signup-link" href="sign_in.html">Sign In</a>
 <script src="js/night-mode.js"></script>
 <script>
 
-    // alert(getWithExpiry('ade'))
+    $('#status').fadeOut(); 
+    $('#preloader').delay(350).fadeOut('slow');
     var form = document.getElementById('inputform')
     form.addEventListener('submit',function(event){
         event.preventDefault()

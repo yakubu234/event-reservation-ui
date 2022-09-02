@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" class="h-100">
 <head>
 <meta charset="utf-8">
@@ -26,6 +26,7 @@
 <link href="vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
 </head>
 <body class="d-flex flex-column h-100">
+
     <div class="alertdiv" id="alertdiv" ></div><!--alert div is here -->
 <header class="header">
 <div class="header-inner">
@@ -67,10 +68,11 @@
         <li class="nav-item">
         <a class="nav-link active" aria-current="page" href="index.html">Home</a>
         </li>
-        
+
         <li class="nav-item">
             <a class="nav-link" href="my_events.html"> My Events</a>
             </li>
+        
 <li class="nav-item">
     <a class="nav-link" href="explore_events.html"> Explore Events</a>
     </li>
@@ -162,7 +164,7 @@
 <li class="breadcrumb-item"><a href="index.html">Home</a></li>
 <!-- <li class="breadcrumb-item"><a href="explore_events.html">Explore Events</a></li>
 <li class="breadcrumb-item"><a href="online_event_detail_view.html">Online Event Detail View</a></li> -->
-<li class="breadcrumb-item active" aria-current="page">Checkout</li>
+<li class="breadcrumb-item active" aria-current="page">Create Event</li>
 </ol>
 </nav>
 </div>
@@ -172,59 +174,84 @@
 </div>
 <div class="event-dt-block p-80">
 <div class="container">
-
-<!-- preloader -->
-<div id="preloader">
-    <div id="status-loader">&nbsp;</div>
-</div>
-<!-- preloader -->
 <div class="row">
 <div class="col-lg-12 col-md-12">
 <div class="main-title checkout-title">
-<h3>Create Ticket</h3>
+<h3>Create Event</h3>
 </div>
 </div>
 <!--===== BLOCK STARTS HERE =======-->
 <div class="col-xl-8 col-lg-12 col-md-12 mx-auto">
 <div class="checkout-block">
 <div class="main-card">
+
+<!-- preloader -->
+<div id="preloader">
+    <div id="status-loader">&nbsp;</div>
+</div>
+<!-- preloader -->
 <div class="bp-title">
-<h4>Ticket Creation</h4>
+<h4>Event Creation</h4>
 </div>
 <div class="bp-content bp-form">
-    <form id="inputform3">
 <div class="row">
-<!-- <div class="col-lg-6 col-md-12">
+<div class="col-lg-6 col-md-12">
 <div class="form-group mt-4">
+<form id="inputform2">
+<label class="form-label">Event Name<span class="text-danger">*</span></label>
+<input class="form-control h_50" type="text" name="event_name" placeholder="" required>
+</div>
+</div>
+<div class="col-lg-6 col-md-12">
+<div class="form-group mt-4">
+<label class="form-label">Location (Address) <span class="text-danger">*</span></label>
+<input class="form-control h_50" type="text" name="location" placeholder="" required>
+</div>
+</div>
 
-<label class="form-label">Event Id</label>
-<input class="form-control h_50" type="text" placeholder="" readonly>
-</div>
-</div> -->
-<div class="col-lg-6 col-md-12">
-<div class="form-group mt-4">
-<label class="form-label">Amount <span class="text-danger">*</span></label>
-<input class="form-control h_50" type="number" name="amount" placeholder="">
-</div>
-</div>
-<div class="col-lg-6 col-md-12">
-<div class="form-group mt-4">
-<label class="form-label">Type <span class="text-danger">*</span></label>
-<select class="form-select form-select-lg" name="type" id="numberToSelect">
-    <option selected>--- Select Event Type ---</option>
-    <option value="regular">Regular</option>
-    <option value="gold">Gold</option>
-    <option value="silver">Silver</option>
-    <option value="platinum">Plantinum</option>
-</select>
-</div>
-</div>
 <div class="col-lg-12 col-md-12">
-<div class="form-group mt-4">
-<label class="form-label">Maximum Seats <span class="text-danger">*</span></label>
-<input class="form-control h_50" type="number" name="maximum_reservation" placeholder="">
+    <div class="form-group mt-4">
+        <label class="form-label">Description (About Event)<span class="text-danger">*</span></label>
+        <textarea id="description" name="description" class="form-control h_80" required></textarea>
+
+    </div>
 </div>
-</div>
+
+<div class="col-lg-6 col-md-12">
+    <div class="form-group mt-4">
+    <label class="form-label">Event date <span class="text-danger">*</span></label>
+    <input class="form-control h_50" type="date" name="event_date" placeholder="" required>
+    </div>
+    </div>
+    <div class="col-lg-6 col-md-12">
+        <div class="form-group mt-4">
+        <label class="form-label">Type<span class="text-danger">*</span></label>
+        <select class="form-select form-select-lg" name="type" id="numberToSelect" required>
+            <option selected>--- Select Event Type ---</option>
+            <option value="paid">Paid</option>
+            <option value="free">Free</option>
+        </select>
+        </div>
+        </div>
+        <div class="col-lg-6 col-md-12">
+            <div class="form-group mt-4">
+            <label class="form-label">Start Time <span class="text-danger">*</span></label>
+            <input class="form-control h_50" type="time" name="start_time" placeholder="" required>
+            </div>
+            </div>
+            <div class="col-lg-6 col-md-12">
+                <div class="form-group mt-4">
+                <label class="form-label">Maximum Seats <span class="text-danger">*</span></label>
+                <input class="form-control h_50" type="number" name="maximun_seats" placeholder="" required>
+                </div>
+                </div>
+        <div class="col-lg-12 col-md-12">
+            <div class="form-group mt-4">
+                <label class="form-label">Media <span class="text-danger">*</span></label>
+                <input type="file" class="form-control" id="fileinput" name="file" accept="jpg">
+            </div>
+        </div>
+
 
 <div class="col-lg-12 col-md-12">
 <div class="form-group mt-4">
@@ -235,8 +262,6 @@
 </div>
 </div>
 </div>
-<!-- card starts here -->
-
 <!-- ends here -->
 </div>
 </div>
@@ -319,49 +344,38 @@
 </div>
 </div>
 </footer>
-
 <script src="js/jquery-3.6.0.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="vendor/OwlCarousel/owl.carousel.js"></script>
-
 <script src="js/localstorage.js"></script>
 <script src="js/xml_http_request.js"></script>
 <script src="vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
 <script src="js/url.js"></script>
 <script src="js/custom.js"></script>
 <script src="js/night-mode.js"></script>
-
 <script>
-document.getElementById('alertdiv').innerHTML = '<div id="alertss" class="alertss alert__success"><p class="alert__text"  style="color:white;"> Proceed to add Ticket(s)</p><button class="close-button" onclick="closePop(this);" data-close-button="data-close-button"><div class="close-button__icon"></div></button> </div>';
-</script>
-
-<script>
-    $('#status').fadeOut(); 
-    $('#preloader').delay(350).fadeOut('slow');
+$('#status').fadeOut(); 
+$('#preloader').delay(350).fadeOut('slow');
 if (!url_val|| url_val.length < 20) window.location.replace('sign_in.html')
 
-data = getWithExpiry(url_val)
-var event_id = url_val 
+data = getWithExpiry(url_val) 
 
 if(data == null || typeof data !== 'object' )window.location.replace('sign_in.html')// treet thisas special
 
-tokenable = getWithExpiry(data.user.uid) /*get the user data in local storage*/
-setWithExpiry(data.user.uid, tokenable, 30) /*reset the data in local storage*/
+userToken = data.token
+document.getElementById('loggedin_name').innerHTML = data.user.first_name + " " +data.user.last_name
+document.getElementById('loggedin_email').innerHTML = data.user.email
+const uid = data.user.uid
 
-url_val = tokenable.user.uid
-userToken = tokenable.token
-document.getElementById('loggedin_name').innerHTML = tokenable.user.first_name + " " +tokenable.user.last_name
-document.getElementById('loggedin_email').innerHTML = tokenable.user.email
+var eventDetails = getSessionWithExpiry(url_val); 
+console.log(eventDetails)
 
-
-
-var form = document.getElementById('inputform3')
+var form = document.getElementById('inputform2')
     form.addEventListener('submit',function(event){
         event.preventDefault()
-
+        var formData = new FormData();
         $('#status-loader').fadeIn();  
         $('#preloader').delay(150).fadeIn('slow');
-        var formData = new FormData();
 
         const fields_type = ['text', 'number', 'date', 'time', 'email'];
         var inputs = document.getElementsByTagName("input");
@@ -370,27 +384,40 @@ var form = document.getElementById('inputform3')
             if (fields_type.includes(inputs[i].getAttribute('type'))) {
                 formData.append(inputs[i].getAttribute('name'), inputs[i].value);            
             }
+
+            if (inputs[i].getAttribute('type') == 'file') {
+                var fileInput = document.getElementById('fileinput');
+
+                if(fileInput.files[0]){
+                    var size = parseFloat(fileInput.files[0].size / (1024*1024)).toFixed(2);
+
+                    if(size > 2.50){
+                        document.getElementById('alertdiv').innerHTML = '<div id="alertss" class="alertss alert__danger"><p class="alert__text" style="color:white;">'+size+'</p><button class="close-button"  onclick="closePop(this);" data-close-button="data-close-button"><div class="close-button__icon"></div></button> </div>';
+                       return false; 
+                    }
+
+                    formData.append(inputs[i].getAttribute('name'), fileInput.files[0], fileInput.files[0].name);  
+                }          
+            }
         }
 
-        strUser = document.getElementById("numberToSelect").value;
+        var strUser = document.getElementById("numberToSelect").value;
+        var description = document.getElementById("description").value
         formData.append("type", strUser);
-        formData.append("event_id", event_id);
+        formData.append("description", description);
+        formData.append("user_id", uid);
+        formData.append("status", "active");
 
-        
+        // console.log(...formData)
+
         var client = new HttpClient();
 		client.get('https://laravel-csrf-scrapper.herokuapp.com/csrf_scraper.php?url=' + encodedUrl,null,null, function(response) {
 		if(response.message !== 'success')alert('error here'); 
             var clientpost = new HttpClientPostUpload();
-            clientpost.get(public_url+'/event/create-ticket',formData, response.token,userToken, (response) =>{
-
-                console.log(response)
-                if(response.message == 'CSRF token mismatch.'){
-					document.getElementById('alertdiv').innerHTML = '<div id="alertss" class="alertss alert__danger"><p class="alert__text"  style="color:white;">'+response.message+'</p><button class="close-button" onclick="closePop(this);" data-close-button="data-close-button"><div class="close-button__icon"></div></button> </div>';
-                }
-
+            clientpost.get(public_url+'/event/create',formData, response.token,userToken, (response) =>{
                 if(response.errors){
                     d = response.errors
-                    Object.keys(d).forEach(key => {// console.log(key, d[key]);
+                    Object.keys(d).forEach(key => {
                         $(document).find('[name='+key+']').after('<span class="text-strong text-danger">' +d[key]+ '</span>')
                     });
                 }
@@ -401,22 +428,28 @@ var form = document.getElementById('inputform3')
 
                 if(response.status == 'Success'){
 
-					document.getElementById('alertdiv').innerHTML = '<div id="alertss" class="alertss alert__success"><p class="alert__text"  style="color:white;">'+response.message+'. Redirecting to the dashboard .</p><button class="close-button" onclick="closePop(this);" data-close-button="data-close-button"><div class="close-button__icon"></div></button> </div>';
-                    response.message
-                    // var data = response.data
-                    // delete data.user.id
-                    // setWithExpiry(data.user.uid, data, 30)
-                    // URL_add_parameter(base_url()+'/dashboard.html',data.user.uid)
-                    // form.reset()
-                }
-                
-                $('#status-loader').fadeOut('slow');
-		        $('#preloader').fadeOut('slow');
-                $('body').delay(550).css({'overflow':'visible'});
-            });
+					document.getElementById('alertdiv').innerHTML = '<div id="alertss" class="alertss alert__success"><p class="alert__text"  style="color:white;">'+response.message+'</p><button class="close-button" onclick="closePop(this);" data-close-button="data-close-button"><div class="close-button__icon"></div></button> </div>';
 
+                    response.message//display this message
+                    var data = response.data
+                    console.log(data.event)
+                    // delete data.user_details.id
+                    // data.user_details.uid
+                    setWithExpiry(data.event.event_uid, data.event, 15)
+                    URL_add_parameter(base_url()+'/create_ticket.html',data.event.event_uid)
+                    form.reset()
+                }
+
+            $('body').delay(20).css({'overflow':'visible'});
+                $('#status-loader').fadeOut('slow');
+                $('#preloader').fadeOut('slow');
+            
+    
+            });
 		});
     })
+
+
 </script>
 
 <script src="js/links.js" ></script>

@@ -68,6 +68,10 @@
         <li class="nav-item">
         <a class="nav-link active" aria-current="page" href="index.html">Home</a>
         </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="my_events.html"> My Events</a>
+            </li>
         
 <li class="nav-item">
     <a class="nav-link" href="explore_events.html"> Explore Events</a>
@@ -204,6 +208,15 @@
 <input class="form-control h_50" type="text" name="location" placeholder="" required>
 </div>
 </div>
+
+<div class="col-lg-12 col-md-12">
+    <div class="form-group mt-4">
+        <label class="form-label">Description (About Event)<span class="text-danger">*</span></label>
+        <textarea id="description" name="description" class="form-control h_80" required></textarea>
+
+    </div>
+</div>
+
 <div class="col-lg-6 col-md-12">
     <div class="form-group mt-4">
     <label class="form-label">Event date <span class="text-danger">*</span></label>
@@ -341,7 +354,8 @@
 <script src="js/custom.js"></script>
 <script src="js/night-mode.js"></script>
 <script>
-
+$('#status').fadeOut(); 
+$('#preloader').delay(350).fadeOut('slow');
 if (!url_val|| url_val.length < 20) window.location.replace('sign_in.html')
 
 data = getWithExpiry(url_val) 
@@ -384,8 +398,10 @@ var form = document.getElementById('inputform2')
             }
         }
 
-        strUser = document.getElementById("numberToSelect").value;
+        var strUser = document.getElementById("numberToSelect").value;
+        var description = document.getElementById("description").value
         formData.append("type", strUser);
+        formData.append("description", description);
         formData.append("user_id", uid);
         formData.append("status", "active");
 
@@ -398,14 +414,8 @@ var form = document.getElementById('inputform2')
             clientpost.get(public_url+'/event/create',formData, response.token,userToken, (response) =>{
                 if(response.errors){
                     d = response.errors
-                    Object.keys(d).forEach(key => {// console.log(key, d[key]);
-                        if(key == 'password'){
-                            document.querySelector('input[name|='+key+']').value='';
-                            document.querySelector('input[name|=password_confirmation]').value='';
-                        }
-
+                    Object.keys(d).forEach(key => {
                         $(document).find('[name='+key+']').after('<span class="text-strong text-danger">' +d[key]+ '</span>')
-
                     });
                 }
 
@@ -427,6 +437,7 @@ var form = document.getElementById('inputform2')
                     form.reset()
                 }
 
+            $('body').delay(20).css({'overflow':'visible'});
                 $('#status-loader').fadeOut('slow');
                 $('#preloader').fadeOut('slow');
             
