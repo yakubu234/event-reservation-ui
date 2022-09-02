@@ -74,16 +74,10 @@
 <li class="nav-item">
 <a class="nav-link active" aria-current="page" href="index.html">Home</a>
 </li>
-<li class="nav-item dropdown">
-<a class="nav-link dropdown-toggle" href="explore_events.html#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-Explore Events
-</a>
-<ul class="dropdown-menu dropdown-submenu">
-<li><a class="dropdown-item" href="explore_events.html">Explore Events</a></li>
-<li><a class="dropdown-item" href="event_detail.html">Venue Event Detail View</a></li>
-<li><a class="dropdown-item" href="online_event_detail_view.html">Online Event Detail View</a></li>
-</ul>
-</li>
+
+<li class="nav-item">
+	<a class="nav-link" href="explore_events.html"> Explore Events</a>
+	</li>
 
 
 </ul>
@@ -254,14 +248,6 @@ Explore Events
 
 
 
-
-	
-
-
-	  
-
-
-
 </div>
 
 
@@ -372,10 +358,10 @@ Explore Events
 		
 
 		var client = new HttpClient();
-		client.get('https://laravel-csrf-scrapper.herokuapp.com/csrf_scraper.php?url=' + encodedUrl,null,null, function(response) {
-		if(response.message !== 'success')alert('error here'); 
+		// client.get('https://laravel-csrf-scrapper.herokuapp.com/csrf_scraper.php?url=' + encodedUrl,null,null, function(response) {
+		// if(response.message !== 'success')alert('error here'); response.token
 
-			client.get(public_url+'/all-events', response.token,null, (response) =>{
+			client.get(public_url+'/all-events', csfr_gen, null, (response) =>{
 				if(response.status == 'Success'){
 
 					if(response.data.events === null || response.data.events.length == 0) {
@@ -387,21 +373,14 @@ Explore Events
 					document.getElementById('alertdiv').innerHTML = '<div id="alertss" class="alertss alert__success"><p class="alert__text"  style="color:white;">'+response.message+'</p><button class="close-button" onclick="closePop(this);" data-close-button="data-close-button"><div class="close-button__icon"></div></button> </div>';
 
 					d = response.data.events
+					setSessionWithExpiry('eventx02L93dn', response.data.events, 40)
 					Object.keys(d).forEach(key => {// console.log(key, d[key]);
-                        console.log(key)
-                        console.log(d[key].event_uid)
-                        console.log(d[key].location)
-                        console.log(d[key].start_time)
-                        console.log(d[key].media_file)
-                        console.log(d[key].type)
-                        console.log(d[key].maximun_seats)
-                        // console.log(d[key].total_reservation)
-                        console.log(d[key])
-                        console.log('new line')
+                        // console.log(key)
 
-
-
-                    document.getElementById('listing-events').innerHTML +='<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mix arts concert workshops volunteer sports health_Wellness" data-ref="mixitup-target"> <div class="main-card mt-4"> <div class="event-thumbnail"> <a href="event_detail.html" class="thumbnail-img"> <img src="images/event-imgs/img-1.jpg" alt="">  </a> </div> <div class="event-content"> <a href="event_detail.html" class="event-title">'+d[key].event_name+'</a> <div class="duration-price-remaining"> <span class="duration-price">Free*</span>  <span class="remaining"></span> </div> </div> <div class="event-footer"> <div class="event-timing"> <div class="publish-date"> <span><i class="fa-solid fa-calendar-day me-2"></i>'+d[key].event_date+'</span> <span class="dot"><i class="fa-solid fa-circle"></i></span>  <span></span>  </div> <span class="publish-time"><i class="fa-solid fa-clock me-2"></i>'+ d[key].start_time +'</span> </div></div></div></div>';
+						if(key > 7) {
+							return;
+						}
+                    document.getElementById('listing-events').innerHTML +='<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mix arts concert workshops volunteer sports health_Wellness" data-ref="mixitup-target"> <div class="main-card mt-4"> <div class="event-thumbnail"> <a href="event_detail.html?raw='+d[key].event_uid+'&val='+url_val+'" class="thumbnail-img"> <img src="images/event-imgs/img-1.jpg" alt="">  </a> </div> <div class="event-content"> <a href="event_detail.html?raw='+d[key].event_uid+'&val='+url_val+'" class="event-title">'+d[key].event_name+'</a> <div class="duration-price-remaining"> <span class="duration-price">'+d[key].type+'*</span>  <span class="remaining"></span> </div> </div> <div class="event-footer"> <div class="event-timing"> <div class="publish-date"> <span><i class="fa-solid fa-calendar-day me-2"></i>'+d[key].event_date+'</span> <span class="dot"><i class="fa-solid fa-circle"></i></span>  <span></span>  </div> <span class="publish-time"><i class="fa-solid fa-clock me-2"></i>'+ d[key].start_time +'</span> </div></div></div></div>';
                     });
 
 					document.getElementById("browse-btn").style.display = "block";
@@ -411,11 +390,13 @@ Explore Events
 					document.getElementById('alertdiv').innerHTML = '<div id="alertss" class="alertss alert__danger"><p class="alert__text" style="color:white;">'+response.message+'</p><button class="close-button"  onclick="closePop(this);" data-close-button="data-close-button"><div class="close-button__icon"></div></button> </div>';
 				}
 
+
+				$('body').delay(50).css({'overflow':'visible'});
+				$('#status-loader').delay(300).fadeOut();
+				$('#preloader').delay(320).fadeOut('slow');
 			});
 
-		});
-		$('#status-loader').delay(2000).fadeOut();
-		$('#preloader').delay(2200).fadeOut('slow');
+		// });
 		
 	</script>
     <script src="js/links.js" ></script>

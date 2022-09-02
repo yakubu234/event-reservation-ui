@@ -17,6 +17,7 @@
 <link href="css/style.css" rel="stylesheet">
 <link href="css/responsive.css" rel="stylesheet">
 <link href="css/night-mode.css" rel="stylesheet">
+<link href="css/alert.css" rel="stylesheet">
 
 <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
 <link href="vendor/OwlCarousel/assets/owl.carousel.css" rel="stylesheet">
@@ -25,177 +26,123 @@
 <link href="vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
 </head>
 <body class="d-flex flex-column h-100">
-
+    <div class="alertdiv" id="alertdiv" ></div><!--alert div is here -->
 <header class="header">
 <div class="header-inner">
-<nav class="navbar navbar-expand-lg bg-barren barren-head navbar fixed-top justify-content-sm-start pt-0 pb-0">
-<div class="container">
-<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-<span class="navbar-toggler-icon">
-<i class="fa-solid fa-bars"></i>
-</span>
-</button>
-<a class="navbar-brand order-1 order-lg-0 ml-lg-0 ml-2 me-auto" href="index.html">
-<div class="res-main-logo">
-<img src="images/logo-icon.svg" alt="">
-</div>
-<div class="main-logo" id="logo">
-<img src="images/logo.svg" alt="">
-<img class="logo-inverse" src="images/dark-logo.svg" alt="">
-</div>
-</a>
-<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-<div class="offcanvas-header">
-<div class="offcanvas-logo" id="offcanvasNavbarLabel">
-<img src="images/logo-icon.svg" alt="">
-</div>
-<button type="button" class="close-btn" data-bs-dismiss="offcanvas" aria-label="Close">
-<i class="fa-solid fa-xmark"></i>
-</button>
-</div>
-<div class="offcanvas-body">
-<div class="offcanvas-top-area">
-<div class="create-bg">
-<a href="create.html" class="offcanvas-create-btn">
-<i class="fa-solid fa-calendar-days"></i>
-<span>Create Event</span>
-</a>
-</div>
-</div>
-<ul class="navbar-nav justify-content-end flex-grow-1 pe_5">
-<li class="nav-item">
-<a class="nav-link active" aria-current="page" href="index.html">Home</a>
-</li>
-<li class="nav-item dropdown">
-<a class="nav-link dropdown-toggle" href="event_detail.html#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-Explore Events
-</a>
-<ul class="dropdown-menu dropdown-submenu">
-<li><a class="dropdown-item" href="explore_events.html">Explore Events</a></li>
-<li><a class="dropdown-item" href="event_detail.html">Venue Event Detail View</a></li>
-<li><a class="dropdown-item" href="online_event_detail_view.html">Online Event Detail View</a></li>
-</ul>
-</li>
-<li class="nav-item">
-<a class="nav-link" href="pricing.html">Pricing</a>
-</li>
-<li class="nav-item dropdown">
-<a class="nav-link dropdown-toggle" href="event_detail.html#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-Blog
-</a>
-<ul class="dropdown-menu dropdown-submenu">
-<li><a class="dropdown-item" href="our_blog.html">Our Blog</a></li>
-<li><a class="dropdown-item" href="blog_detail_view.html">Blog Detail View</a></li>
-</ul>
-</li>
-<li class="nav-item dropdown">
-<a class="nav-link dropdown-toggle" href="event_detail.html#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-Help
-</a>
-<ul class="dropdown-menu dropdown-submenu">
-<li><a class="dropdown-item" href="faq.html">FAQ</a></li>
-<li><a class="dropdown-item" href="help_center.html">Help Center</a></li>
-<li><a class="dropdown-item" href="contact_us.html">Contact Us</a></li>
-</ul>
-</li>
-<li class="nav-item dropdown">
-<a class="nav-link dropdown-toggle" href="event_detail.html#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-Pages
-</a>
-<ul class="dropdown-menu dropdown-submenu">
-<li>
-<a class="dropdown-item submenu-item" href="event_detail.html#">Other Pages</a>
-<ul class="submenu dropdown-menu">
-<li><a class="dropdown-item pe-5" href="sign_in.html">Sign In</a></li>
-<li><a class="dropdown-item pe-5" href="sign_up.html">Sign Up</a></li>
-<li><a class="dropdown-item pe-5" href="forgot_password.html">Forgot Password</a></li>
-<li><a class="dropdown-item pe-5" href="about_us.html">About Us</a></li>
-<li><a class="dropdown-item pe-5" href="checkout.html">Checkout</a></li>
-<li><a class="dropdown-item pe-5" href="checkout_premium.html">Checkout Premium</a></li>
-<li><a class="dropdown-item pe-5" href="invoice.html">Invoice</a></li>
-<li><a class="dropdown-item pe-5" href="coming_soon.html">Coming Soon</a></li>
-<li><a class="dropdown-item pe-5" href="error_404.html">Error 404</a></li>
-</ul>
-</li>
-<li>
-<a class="dropdown-item submenu-item" href="event_detail.html#">Create Event</a>
-<ul class="submenu dropdown-menu">
-<li><a class="dropdown-item pe-5" href="create.html">Create</a></li>
-<li><a class="dropdown-item pe-5" href="create_venue_event.html">Create Venue Event</a></li>
-<li><a class="dropdown-item pe-5" href="create_online_event.html">Create Online Event</a></li>
-</ul>
-</li>
-<li>
-<a class="dropdown-item submenu-item" href="event_detail.html#">Events View</a>
-<ul class="submenu dropdown-menu">
-<li><a class="dropdown-item pe-5" href="online_event_detail_view.html">Online Event Detail View</a></li>
-<li><a class="dropdown-item pe-5" href="event_detail.html">Venue Event Detail View</a></li>
-</ul>
-</li>
-<li><a class="dropdown-item" href="booking_confirmed.html">Booking Confirmed</a></li>
-<li><a class="dropdown-item" href="attendee_profile_view.html">Attendee Profile View</a></li>
-<li><a class="dropdown-item" href="organiser_profile_view.html">Organiser Profile View</a></li>
-<li><a class="dropdown-item" href="my_organisation_dashboard.html">Organization Dashboard</a></li>
-<li><a class="dropdown-item" href="sell_tickets_online.html">Sell Tickets Online</a></li>
-<li><a class="dropdown-item" href="refer_a_friend.html">Refer a Friend</a></li>
-<li><a class="dropdown-item" href="term_and_conditions.html">Terms & Conditions</a></li>
-<li><a class="dropdown-item" href="privacy_policy.html">Privacy Policy</a></li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="offcanvas-footer">
-<div class="offcanvas-social">
-<h5>Follow Us</h5>
-<ul class="social-links">
-<li><a href="event_detail.html#" class="social-link"><i class="fab fa-facebook-square"></i></a>
-<li><a href="event_detail.html#" class="social-link"><i class="fab fa-instagram"></i></a>
-<li><a href="event_detail.html#" class="social-link"><i class="fab fa-twitter"></i></a>
-<li><a href="event_detail.html#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-<li><a href="event_detail.html#" class="social-link"><i class="fab fa-youtube"></i></a>
-</ul>
-</div>
-</div>
-</div>
-<div class="right-header order-2">
-<ul class="align-self-stretch">
-<li>
-<a href="create.html" class="create-btn btn-hover">
-<i class="fa-solid fa-calendar-days"></i>
-<span>Create Event</span>
-</a>
-</li>
-<li class="dropdown account-dropdown">
-<a href="event_detail.html#" class="account-link" role="button" id="accountClick" data-bs-auto-close="outside" data-bs-toggle="dropdown" aria-expanded="false">
-<img src="images/profile-imgs/img-13.jpg" alt="">
-<i class="fas fa-caret-down arrow-icon"></i>
-</a>
-<ul class="dropdown-menu dropdown-menu-account dropdown-menu-end" aria-labelledby="accountClick">
-<li>
-<div class="dropdown-account-header">
-<div class="account-holder-avatar">
-<img src="images/profile-imgs/img-13.jpg" alt="">
-</div>
-<h5>John Doe</h5>
-<p><a href="../../../cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="553f3a3d3b313a3015302d34382539307b363a38">[email&#160;protected]</a></p>
-</div>
-</li>
-<li class="profile-link">
-<a href="my_organisation_dashboard.html" class="link-item">My Organisation</a>
-<a href="organiser_profile_view.html" class="link-item">My Profile</a>
-<a href="sign_in.html" class="link-item">Sign Out</a>
-</li>
-</ul>
-</li>
-<li>
-<div class="night_mode_switch__btn">
-<div id="night-mode" class="fas fa-moon fa-sun"></div>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</nav>
+    <nav class="navbar navbar-expand-lg bg-barren barren-head navbar fixed-top justify-content-sm-start pt-0 pb-0">
+        <div class="container">
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+        <span class="navbar-toggler-icon">
+        <i class="fa-solid fa-bars"></i>
+        </span>
+        </button>
+        <a class="navbar-brand order-1 order-lg-0 ml-lg-0 ml-2 me-auto" href="index.html">
+        <div class="res-main-logo">
+        <img src="images/logo-icon.svg" alt="">
+        </div>
+        <div class="main-logo" id="logo">
+        <img src="images/logo.svg" alt="">
+        <img class="logo-inverse" src="images/dark-logo.svg" alt="">
+        </div>
+        </a>
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+        <div class="offcanvas-logo" id="offcanvasNavbarLabel">
+        <img src="images/logo-icon.svg" alt="">
+        </div>
+        <button type="button" class="close-btn" data-bs-dismiss="offcanvas" aria-label="Close">
+        <i class="fa-solid fa-xmark"></i>
+        </button>
+        </div>
+        <div class="offcanvas-body">
+        <div class="offcanvas-top-area">
+        <div class="create-bg">
+        <a href="create_event.html" class="offcanvas-create-btn">
+        <i class="fa-solid fa-calendar-days"></i>
+        <span>Create Event</span>
+        </a>
+        </div>
+        </div>
+        <ul class="navbar-nav justify-content-center flex-grow-1 pe_5">
+        <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+        </li>
+        
+        <li class="nav-item">
+        <a class="nav-link" href="explore_events.html"> Explore Events</a>
+        </li>
+        
+        
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="index.html#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Help
+        </a>
+        <ul class="dropdown-menu dropdown-submenu">
+        <li><a class="dropdown-item" href="faq.html">FAQ</a></li>
+        <li><a class="dropdown-item" href="help_center.html">Help Center</a></li>
+        <li><a class="dropdown-item" href="contact_us.html">Contact Us</a></li>
+        </ul>
+        </li>
+        
+        
+        </ul>
+        </div>
+        <div class="offcanvas-footer">
+        <div class="offcanvas-social">
+        <h5>Follow Us</h5>
+        <ul class="social-links">
+        <li><a href="index.html#" class="social-link"><i class="fab fa-facebook-square"></i></a>
+        <li><a href="index.html#" class="social-link"><i class="fab fa-instagram"></i></a>
+        <li><a href="index.html#" class="social-link"><i class="fab fa-twitter"></i></a>
+        <li><a href="index.html#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+        <li><a href="index.html#" class="social-link"><i class="fab fa-youtube"></i></a>
+        </ul>
+        </div>
+        </div>
+        </div>
+        <div class="right-header order-2">
+        <ul class="align-self-stretch">
+        <!--CREATE EVENT BUTTO SECTION STARTS HERE-->
+        <li>
+            <a href="create_event.html">
+                <button type="button" class="create-btn btn-hover">
+                <i class="fa-solid fa-calendar-days"></i>
+                <span>Create Event</span>
+                </button>
+            </a>
+        </li>
+        <!--=====-->
+        <li class="dropdown account-dropdown">
+        <a href="index.html#" class="account-link" role="button" id="accountClick" data-bs-auto-close="outside" data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="images/profile-imgs/img-13.jpg" alt="">
+        <i class="fas fa-caret-down arrow-icon"></i>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-account dropdown-menu-end" aria-labelledby="accountClick">
+        <li>
+        <div class="dropdown-account-header">
+        <div class="account-holder-avatar">
+        <img src="images/profile-imgs/img-13.jpg" alt="">
+        </div>
+        <h5 id="loggedin_name"></h5>
+        <p><a href="" class="__cf_email__" id="loggedin_email"></a></p>
+        </div>
+        </li>
+        <li class="profile-link">
+        <a href="my_organisation_dashboard.html" class="link-item">My Organisation</a>
+        <a href="organiser_profile_view.html" class="link-item">My Profile</a>
+        <a href="signout.html" class="link-item">Sign Out</a>
+        </li>
+        </ul>
+        </li>
+        <li>
+        <div class="night_mode_switch__btn">
+        <div id="night-mode" class="fas fa-moon fa-sun"></div>
+        </div>
+        </li>
+        </ul>
+        </div>
+        </div>
+        </nav>
 <div class="overlay"></div>
 </div>
 </header>
@@ -204,6 +151,13 @@ Pages
 <div class="wrapper">
 <div class="breadcrumb-block">
 <div class="container">
+
+    <!-- preloader -->
+<div id="preloader">
+    <div id="status-loader">&nbsp;</div>
+</div>
+<!-- preloader -->
+
 <div class="row">
 <div class="col-lg-12 col-md-10">
 <div class="barren-breadcrumb">
@@ -219,25 +173,32 @@ Pages
 </div>
 </div>
 </div>
+
 <div class="event-dt-block p-80">
 <div class="container">
 <div class="row">
+
+<!-- line 1 -->
 <div class="col-xl-12 col-lg-12 col-md-12">
-<div class="event-top-dts">
-<div class="event-top-date">
-<span class="event-month">May</span>
-<span class="event-date">3</span>
-</div>
-<div class="event-top-dt">
-<h3 class="event-main-title">Kizz daniel - Wednesday May 3, 2022, at 5pm</h3>
-<div class="event-top-info-status">
-<span class="event-type-name"><i class="fa-solid fa-location-dot"></i>Venue Event</span>
-<span class="event-type-name details-hr">Starts on <span class="ev-event-date">May 3, 2022 5:00 PM</span></span>
-<span class="event-type-name details-hr">1h 45mins</span>
-</div>
-</div>
-</div>
-</div>
+    <div class="event-top-dts">
+    <div class="event-top-date">
+    <span class="event-month" id="month-first">May</span>
+    <span class="event-date" id="get-day">3</span>
+    </div>
+    <div class="event-top-dt">
+    <h3 class="event-main-title" id="event-title"> </h3>
+    <div class="event-top-info-status">
+    <span class="event-type-name"><i class="fa-solid fa-location-dot"></i> Location: <span id="event-location"></span></span>
+    <span class="event-type-name details-hr">Starts <span class="ev-event-date" id="event-date"> </span></span>
+    <!-- <span class="event-type-name details-hr">1h 45mins</span> -->
+    </div>
+    </div>
+    </div>
+    </div>
+<!-- line 1 ended -->
+
+
+<!-- the left side -->
 <div class="col-xl-8 col-lg-7 col-md-12">
 <div class="main-event-dt">
 <div class="event-img">
@@ -255,15 +216,17 @@ Pages
 </div>
 <div class="main-event-content">
 <h4>About This Event</h4>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dolor justo, sodales mattis orci et, mattis faucibus est. Nulla semper consectetur sapien a tempor. Ut vel lacus lorem. Nulla mauris massa, pharetra a mi ut, mattis euismod libero. Ut pretium bibendum urna nec egestas. Etiam tempor vehicula libero. Aenean cursus venenatis orci, ac porttitor leo porta sit amet. Nulla eleifend mollis enim sed rutrum. Nunc cursus ex a ligula consequat aliquet. Donec semper tellus ac ante vestibulum, vitae varius leo mattis. In vestibulum blandit tempus. Etiam elit turpis, volutpat hendrerit varius ut, posuere a sapien. Maecenas molestie bibendum finibus. Nulla euismod neque vel sem hendrerit faucibus. Nam sit amet metus sollicitudin, luctus eros at, consectetur libero.</p>
+<p id="event-description" ></p>
 <!-- <p>In malesuada luctus libero sed gravida. Suspendisse nunc est, maximus vel viverra nec, suscipit non massa. Maecenas efficitur vestibulum pellentesque. Ut finibus ullamcorper congue. Sed ut libero sit amet lorem venenatis facilisis. Mauris egestas tortor vel massa auctor, eget gravida mauris cursus. Etiam elementum semper fermentum. Suspendisse potenti. Morbi lobortis leo urna, non laoreet enim ultricies id. Integer id felis nec sapien consectetur porttitor. Proin tempor mauris in odio iaculis semper. Cras ultricies nulla et dui viverra, eu convallis orci fermentum.</p> -->
 </div>
 </div>
 </div>
+
+<!-- evewnt booking side -->
 <div class="col-xl-4 col-lg-5 col-md-12">
 <div class="main-card event-right-dt">
 <div class="bp-title">
-<h4>Event Details</h4>
+<h4>Event Details <span class="" id="edit-delete-button"></span></h4> 
 </div>
 <div class="time-left">
 <div class="countdown">
@@ -302,7 +265,7 @@ Pages
 </div>
 <div class="event-dt-right-content">
 <h4>Date and Time</h4>
-<h5>May 3, 2022 5:00 PM</h5>
+<h5 id="second-date"></h5>
 
 <!-- add to calendar starts here -->
 <div class="add-to-calendar">
@@ -325,7 +288,7 @@ Pages
 </div>
 <div class="event-dt-right-content">
 <h4>Location</h4>
-<h5 class="mb-0">Lagos</h5>
+<h5 class="mb-0" id="event-location2" ></h5>
 <!-- <a href="event_detail.html#"><i class="fa-solid fa-location-dot me-2"></i>View Map</a> -->
 </div>
 </div>
@@ -336,7 +299,7 @@ Pages
     </div>
     <div class="event-dt-right-content">
     <h4>Ticket Available</h4>
-    <h5 class="mb-0">532 tickets</h5>
+    <h5 class="mb-0" id="remaining-seats"> </h5>
     <!-- <a href="event_detail.html#"><i class="fa-solid fa-location-dot me-2"></i>View Map</a> -->
     </div>
 </div>
@@ -347,7 +310,7 @@ Pages
     </div>
     <div class="event-dt-right-content">
     <h4>Amount</h4>
-    <h5 class="mb-0">N10,000.00</h5>
+    <span id="rema" ></span>
     <!-- <a href="event_detail.html#"><i class="fa-solid fa-location-dot me-2"></i>View Map</a> -->
     </div>
 </div>
@@ -637,12 +600,149 @@ Pages
 </div>
 </footer>
 
-<script data-cfasync="false" src="../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="js/jquery-3.6.0.min.js"></script>
+<script src="js/jquery-3.6.0.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="vendor/OwlCarousel/owl.carousel.js"></script>
+<script src="js/localstorage.js"></script>
+<script src="js/xml_http_request.js"></script>
 <script src="vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+<script src="js/url.js"></script>
 <script src="js/custom.js"></script>
+
+<script>
+    let date = null;
+
+    const urlParams = new URLSearchParams(window.location.search);
+    even_id = urlParams.get('raw');
+    if (!urlParams|| urlParams.length < 20) {
+
+        $('body').css({'overflow':'visible'});
+        $('#status-loader').fadeOut();
+        $('#preloader').fadeOut('slow');
+        document.getElementById('alertdiv').innerHTML = '<div id="alertss" class="alertss alert__danger"><p class="alert__text" style="color:white;"> Invalid Event selected </p><button class="close-button"  onclick="closePop(this);" data-close-button="data-close-button"><div class="close-button__icon"></div></button> </div>';
+        wait(3000)
+
+        window.location.replace('index.html')
+    }
+
+    var d = getSessionWithExpiry('eventx02L93dn')
+
+    if(d == null)window.location.replace('index.html')
+
+    Object.keys(d).forEach(key => {
+        
+		if(d[key].event_uid == even_id) {
+			console.log(d[key])
+
+        // add the button if it is the user that owns the event 
+        if (!url_val|| url_val.length >11) {
+           data = getWithExpiry(url_val)      
+           if(data){
+            setWithExpiry(data.user.uid, data, 30); 
+            setSessionWithExpiry(data.user.uid+"single", d[key], 30); 
+                if(data.user.uid == d[key].user.uid){
+                document.getElementById('edit-delete-button').innerHTML = '<a class="btn btn-danger" href="edit_event.html?val='+data.user.uid+'" ><i class="fa fa-trash" ></i></a> <a href="edit_event.html" class="btn btn-warning"> <i class="fa fa-pencil-square" ></i></a>';
+                }
+            }
+        }
+       
+
+
+        const date = new Date(d[key].event_date)
+        monthsJs[date.getMonth()]
+        var start_time = d[key].start_time
+        console.log(start_time)
+
+        document.getElementById('event-title').innerHTML = d[key].event_name;
+        document.getElementById('event-location').innerHTML = d[key].location;
+        document.getElementById('event-location2').innerHTML = d[key].location;
+        document.getElementById('event-date').innerHTML = monthsJs[date.getMonth()] + " " +date.getDate() + " " + date.getFullYear()  + " By " + start_time;
+        document.getElementById('month-first').innerHTML = monthsJs[date.getMonth()]
+        document.getElementById('get-day').innerHTML = date.getDate()
+        document.getElementById('event-description').innerHTML = d[key].description
+        document.getElementById('second-date').innerHTML = monthsJs[date.getMonth()] + " " +date.getDate() + " " + date.getFullYear()  + " By " + start_time;
+
+        var bookingLeft = d[key].maximun_seats - d[key].total_reservation;
+        document.getElementById('remaining-seats').innerHTML = bookingLeft + " "+ " "+ "tickets"
+        
+        ticket = d[key].ticket;
+        if(ticket.length > 0){
+            Object.keys(ticket).forEach(key => {
+                        console.log(ticket[key].amount)
+                        console.log(ticket[key].type)
+                        remainder = ticket[key].maximum_reservation - ticket[key].current_reservation;
+                        document.getElementById('rema').innerHTML += '<h5 class="mb-0">' + capitalizeFirstLetter(ticket[key].type) +"&nbsp;&nbsp; &#x20A6;"+ticket[key].amount+ " ";
+
+                        // document.getElementById('rema').innerHTML += '<h5 class="mb-0">' + capitalizeFirstLetter(ticket[key].type) +" &#x20A6;"+ticket[key].amount+ " "+ remainder +"ticket(s) remaining </h5>";                                      
+                })
+        }else{
+            // no ticket for this event
+        }
+
+        function capitalizeFirstLetter(str) {
+            return str[0].toUpperCase() + str.slice(1);
+        }
+        
+
+        // === Timer === //
+
+  const second = 1000,
+        minute = second * 60,
+        hour = minute * 60,
+        day = hour * 24;
+
+  //I'm adding this section so I don't have to keep updating this pen every year :-)
+  //remove this if you don't need it
+  let today = date,
+      dd = String(today.getDate()).padStart(2, "0"),
+      mm = String(today.getMonth() + 1).padStart(2, "0"),
+      yyyy = today.getFullYear(),
+      nextYear = yyyy + 1,
+      dayMonth = "06/01/",
+      event = dayMonth + yyyy;
+  
+  today = mm + "/" + dd + "/" + yyyy;
+  if (today > event) {
+    event = dayMonth + nextYear;
+  }
+  //end
+  
+  const countDown = new Date(event).getTime(),
+      x = setInterval(function() {    
+
+        const now = new Date().getTime(),
+              distance = countDown - now;
+
+        document.getElementById("day").innerText = Math.floor(distance / (day)),
+          document.getElementById("hour").innerText = Math.floor((distance % (day)) / (hour)),
+          document.getElementById("minute").innerText = Math.floor((distance % (hour)) / (minute)),
+          document.getElementById("second").innerText = Math.floor((distance % (minute)) / second);
+
+        //do something later when date is reached
+        if (distance < 0) {
+          document.getElementById("headline").innerText = "Booking Ends!";
+          document.getElementById("countdown").style.display = "none";
+          document.getElementById("content").style.display = "block";
+          clearInterval(x);
+        }
+        //seconds
+      }, 0);
+
+         // === Timer === //
+
+
+		}
+    });
+
+
+$('#status-loader').fadeOut();
+$('#preloader').delay(100).fadeOut('slow');
+$('body').delay(20).css({'overflow':'visible'});
+</script>
+
 <script src="js/timer.js"></script>
 <script src="js/night-mode.js"></script>
+<script src="js/links.js" ></script>
+<script src="js/alert.js" ></script>
 </body>
 </html>

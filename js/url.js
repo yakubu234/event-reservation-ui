@@ -1,5 +1,5 @@
-function URL_add_parameter(url, value){
-    var param ='val'
+function URL_add_parameter(url, value, param ='val'){
+    // var param ='val'
     var hash       = {};
     var parser     = document.createElement('a');
 
@@ -45,3 +45,18 @@ function base_url() {
 
     return url;
 }
+
+const monthsJs = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'June',
+    'July',
+    'Aug',
+    'Sept',
+    'Oct',
+    'Nov',
+    'Dec'
+  ]
