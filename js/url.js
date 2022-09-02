@@ -1,5 +1,5 @@
-function URL_add_parameter(url, value){
-    var param ='val'
+function URL_add_parameter(url, value, param ='val'){
+    // var param ='val'
     var hash       = {};
     var parser     = document.createElement('a');
 

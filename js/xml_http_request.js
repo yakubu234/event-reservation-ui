@@ -51,6 +51,28 @@ var HttpClientPost = function() {
     }
 }
 
+var HttpClientPostUpload = function() {
+    this.get = function(aUrl,data, cSrf,token=null, aCallback) {
+        var anHttpRequest = new XMLHttpRequest();
+        anHttpRequest.onreadystatechange = function() {
+            if (anHttpRequest.readyState == 4 && (anHttpRequest.status >= 200 && anHttpRequest.status <= 299))
+                aCallback(JSON.parse(anHttpRequest.responseText));
+
+            if (anHttpRequest.readyState == 4 && (anHttpRequest.status >= 400 && anHttpRequest.status <= 499))
+                aCallback(JSON.parse(anHttpRequest.responseText));
+            
+            if (anHttpRequest.readyState == 4 && (anHttpRequest.status >= 500 && anHttpRequest.status <= 599))
+                aCallback(JSON.parse(anHttpRequest.responseText));
+        }
+
+        anHttpRequest.open("POST", aUrl, true);
+        anHttpRequest.setRequestHeader('X-CSRF-TOKEN', cSrf);  
+        anHttpRequest.setRequestHeader('Access-Control-Allow-Origin', '*');   
+        anHttpRequest.setRequestHeader('Authorization', 'Bearer ' + token);
+        anHttpRequest.send(data);
+    }
+}
+
 function serializeForm(form)
 {
     let rawData = new FormData(form);

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" class="h-100">
 <head>
 <meta charset="utf-8">
@@ -160,7 +160,7 @@ New to Barren?<a class="signup-link" href="sign_up.html">Sign up</a>
 
                 if(response.status == 'Success'){
 
-					document.getElementById('alertdiv').innerHTML = '<div id="alertss" class="alertss alert__success"><p class="alert__text"  style="color:white;">'+response.message+'. Redirecting to the dashboard .</p><button class="close-button" onclick="closePop(this);" data-close-button="data-close-button"><div class="close-button__icon"></div></button> </div>';
+					document.getElementById('alertdiv').innerHTML = '<div id="alertss" class="alertss alert__success"><p class="alert__text"  style="color:white;">'+response.message+'</p><button class="close-button" onclick="closePop(this);" data-close-button="data-close-button"><div class="close-button__icon"></div></button> </div>';
                     response.message
                     response.data.token
                     var data = response.data
@@ -172,7 +172,6 @@ New to Barren?<a class="signup-link" href="sign_up.html">Sign up</a>
                 
                 $('#status-loader').fadeOut('slow');
 		        $('#preloader').fadeOut('slow');
-                $('body').delay(550).css({'overflow':'visible'});
             });
 
 		});

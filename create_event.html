@@ -17,6 +17,7 @@
 <link href="css/style.css" rel="stylesheet">
 <link href="css/responsive.css" rel="stylesheet">
 <link href="css/night-mode.css" rel="stylesheet">
+<link href="css/alert.css" rel="stylesheet">
 
 <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
 <link href="vendor/OwlCarousel/assets/owl.carousel.css" rel="stylesheet">
@@ -26,176 +27,123 @@
 </head>
 <body class="d-flex flex-column h-100">
 
+    <div class="alertdiv" id="alertdiv" ></div><!--alert div is here -->
 <header class="header">
 <div class="header-inner">
-<nav class="navbar navbar-expand-lg bg-barren barren-head navbar fixed-top justify-content-sm-start pt-0 pb-0">
-<div class="container">
-<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-<span class="navbar-toggler-icon">
-<i class="fa-solid fa-bars"></i>
-</span>
-</button>
-<a class="navbar-brand order-1 order-lg-0 ml-lg-0 ml-2 me-auto" href="index.html">
-<div class="res-main-logo">
-<img src="images/logo-icon.svg" alt="">
-</div>
-<div class="main-logo" id="logo">
-<img src="images/logo.svg" alt="">
-<img class="logo-inverse" src="images/dark-logo.svg" alt="">
-</div>
-</a>
-<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-<div class="offcanvas-header">
-<div class="offcanvas-logo" id="offcanvasNavbarLabel">
-<img src="images/logo-icon.svg" alt="">
-</div>
-<button type="button" class="close-btn" data-bs-dismiss="offcanvas" aria-label="Close">
-<i class="fa-solid fa-xmark"></i>
-</button>
-</div>
-<div class="offcanvas-body">
-<div class="offcanvas-top-area">
-<div class="create-bg">
-<a href="create.html" class="offcanvas-create-btn">
-<i class="fa-solid fa-calendar-days"></i>
-<span>Create Event</span>
-</a>
-</div>
-</div>
-<ul class="navbar-nav justify-content-end flex-grow-1 pe_5">
-<li class="nav-item">
-<a class="nav-link active" aria-current="page" href="index.html">Home</a>
-</li>
-<li class="nav-item dropdown">
-<a class="nav-link dropdown-toggle" href="checkout.html#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-Explore Events
-</a>
-<ul class="dropdown-menu dropdown-submenu">
-<li><a class="dropdown-item" href="explore_events.html">Explore Events</a></li>
-<li><a class="dropdown-item" href="venue_event_detail_view.html">Venue Event Detail View</a></li>
-<li><a class="dropdown-item" href="online_event_detail_view.html">Online Event Detail View</a></li>
-</ul>
-</li>
-<li class="nav-item">
-<a class="nav-link" href="pricing.html">Pricing</a>
-</li>
-<li class="nav-item dropdown">
-<a class="nav-link dropdown-toggle" href="checkout.html#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-Blog
-</a>
-<ul class="dropdown-menu dropdown-submenu">
-<li><a class="dropdown-item" href="our_blog.html">Our Blog</a></li>
-<li><a class="dropdown-item" href="blog_detail_view.html">Blog Detail View</a></li>
-</ul>
-</li>
-<li class="nav-item dropdown">
-<a class="nav-link dropdown-toggle" href="checkout.html#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-Help
-</a>
-<ul class="dropdown-menu dropdown-submenu">
-<li><a class="dropdown-item" href="faq.html">FAQ</a></li>
-<li><a class="dropdown-item" href="help_center.html">Help Center</a></li>
-<li><a class="dropdown-item" href="contact_us.html">Contact Us</a></li>
-</ul>
-</li>
-<li class="nav-item dropdown">
-<a class="nav-link dropdown-toggle" href="checkout.html#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-Pages
-</a>
-<ul class="dropdown-menu dropdown-submenu">
-<li>
-<a class="dropdown-item submenu-item" href="checkout.html#">Other Pages</a>
-<ul class="submenu dropdown-menu">
-<li><a class="dropdown-item pe-5" href="sign_in.html">Sign In</a></li>
-<li><a class="dropdown-item pe-5" href="sign_up.html">Sign Up</a></li>
-<li><a class="dropdown-item pe-5" href="forgot_password.html">Forgot Password</a></li>
-<li><a class="dropdown-item pe-5" href="about_us.html">About Us</a></li>
-<li><a class="dropdown-item pe-5" href="checkout.html">Checkout</a></li>
-<li><a class="dropdown-item pe-5" href="checkout_premium.html">Checkout Premium</a></li>
-<li><a class="dropdown-item pe-5" href="invoice.html">Invoice</a></li>
-<li><a class="dropdown-item pe-5" href="coming_soon.html">Coming Soon</a></li>
-<li><a class="dropdown-item pe-5" href="error_404.html">Error 404</a></li>
-</ul>
-</li>
-<li>
-<a class="dropdown-item submenu-item" href="checkout.html#">Create Event</a>
-<ul class="submenu dropdown-menu">
-<li><a class="dropdown-item pe-5" href="create.html">Create</a></li>
-<li><a class="dropdown-item pe-5" href="create_venue_event.html">Create Venue Event</a></li>
-<li><a class="dropdown-item pe-5" href="create_online_event.html">Create Online Event</a></li>
-</ul>
-</li>
-<li>
-<a class="dropdown-item submenu-item" href="checkout.html#">Events View</a>
-<ul class="submenu dropdown-menu">
-<li><a class="dropdown-item pe-5" href="online_event_detail_view.html">Online Event Detail View</a></li>
-<li><a class="dropdown-item pe-5" href="venue_event_detail_view.html">Venue Event Detail View</a></li>
-</ul>
-</li>
-<li><a class="dropdown-item" href="booking_confirmed.html">Booking Confirmed</a></li>
-<li><a class="dropdown-item" href="attendee_profile_view.html">Attendee Profile View</a></li>
-<li><a class="dropdown-item" href="organiser_profile_view.html">Organiser Profile View</a></li>
-<li><a class="dropdown-item" href="my_organisation_dashboard.html">Organization Dashboard</a></li>
-<li><a class="dropdown-item" href="sell_tickets_online.html">Sell Tickets Online</a></li>
-<li><a class="dropdown-item" href="refer_a_friend.html">Refer a Friend</a></li>
-<li><a class="dropdown-item" href="term_and_conditions.html">Terms & Conditions</a></li>
-<li><a class="dropdown-item" href="privacy_policy.html">Privacy Policy</a></li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="offcanvas-footer">
-<div class="offcanvas-social">
-<h5>Follow Us</h5>
-<ul class="social-links">
-<li><a href="checkout.html#" class="social-link"><i class="fab fa-facebook-square"></i></a>
-<li><a href="checkout.html#" class="social-link"><i class="fab fa-instagram"></i></a>
-<li><a href="checkout.html#" class="social-link"><i class="fab fa-twitter"></i></a>
-<li><a href="checkout.html#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-<li><a href="checkout.html#" class="social-link"><i class="fab fa-youtube"></i></a>
-</ul>
-</div>
-</div>
-</div>
-<div class="right-header order-2">
-<ul class="align-self-stretch">
-<!-- <li>
-<a href="create.html" class="create-btn btn-hover">
-<i class="fa-solid fa-calendar-days"></i>
-<span>Create Event</span>
-</a>
-</li> -->
-<li class="dropdown account-dropdown">
-<a href="checkout.html#" class="account-link" role="button" id="accountClick" data-bs-auto-close="outside" data-bs-toggle="dropdown" aria-expanded="false">
-<img src="images/profile-imgs/img-13.jpg" alt="">
-<i class="fas fa-caret-down arrow-icon"></i>
-</a>
-<ul class="dropdown-menu dropdown-menu-account dropdown-menu-end" aria-labelledby="accountClick">
-<li>
-<div class="dropdown-account-header">
-<div class="account-holder-avatar">
-<img src="images/profile-imgs/img-13.jpg" alt="">
-</div>
-<h5>John Doe</h5>
-<p><a href="../../../cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="58323730363c373d183d20393528343d763b3735">[email&#160;protected]</a></p>
-</div>
-</li>
-<li class="profile-link">
-<a href="my_organisation_dashboard.html" class="link-item">My Organisation</a>
-<a href="organiser_profile_view.html" class="link-item">My Profile</a>
-<a href="sign_in.html" class="link-item">Sign Out</a>
-</li>
-</ul>
-</li>
-<li>
-<div class="night_mode_switch__btn">
-<div id="night-mode" class="fas fa-moon fa-sun"></div>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</nav>
+    <nav class="navbar navbar-expand-lg bg-barren barren-head navbar fixed-top justify-content-sm-start pt-0 pb-0">
+        <div class="container">
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+        <span class="navbar-toggler-icon">
+        <i class="fa-solid fa-bars"></i>
+        </span>
+        </button>
+        <a class="navbar-brand order-1 order-lg-0 ml-lg-0 ml-2 me-auto" href="index.html">
+        <div class="res-main-logo">
+        <img src="images/logo-icon.svg" alt="">
+        </div>
+        <div class="main-logo" id="logo">
+        <img src="images/logo.svg" alt="">
+        <img class="logo-inverse" src="images/dark-logo.svg" alt="">
+        </div>
+        </a>
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+        <div class="offcanvas-logo" id="offcanvasNavbarLabel">
+        <img src="images/logo-icon.svg" alt="">
+        </div>
+        <button type="button" class="close-btn" data-bs-dismiss="offcanvas" aria-label="Close">
+        <i class="fa-solid fa-xmark"></i>
+        </button>
+        </div>
+        <div class="offcanvas-body">
+        <div class="offcanvas-top-area">
+        <div class="create-bg">
+        <a href="create_event.html" class="offcanvas-create-btn">
+        <i class="fa-solid fa-calendar-days"></i>
+        <span>Create Event</span>
+        </a>
+        </div>
+        </div>
+        <ul class="navbar-nav justify-content-center flex-grow-1 pe_5">
+        <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+        </li>
+        
+        <li class="nav-item">
+        <a class="nav-link" href="create_ticket.html">create Ticket</a>
+        </li>
+        
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="index.html#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Help
+        </a>
+        <ul class="dropdown-menu dropdown-submenu">
+        <li><a class="dropdown-item" href="faq.html">FAQ</a></li>
+        <li><a class="dropdown-item" href="help_center.html">Help Center</a></li>
+        <li><a class="dropdown-item" href="contact_us.html">Contact Us</a></li>
+        </ul>
+        </li>
+        
+        
+        </ul>
+        </div>
+        <div class="offcanvas-footer">
+        <div class="offcanvas-social">
+        <h5>Follow Us</h5>
+        <ul class="social-links">
+        <li><a href="index.html#" class="social-link"><i class="fab fa-facebook-square"></i></a>
+        <li><a href="index.html#" class="social-link"><i class="fab fa-instagram"></i></a>
+        <li><a href="index.html#" class="social-link"><i class="fab fa-twitter"></i></a>
+        <li><a href="index.html#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+        <li><a href="index.html#" class="social-link"><i class="fab fa-youtube"></i></a>
+        </ul>
+        </div>
+        </div>
+        </div>
+        <div class="right-header order-2">
+        <ul class="align-self-stretch">
+        <!--CREATE EVENT BUTTO SECTION STARTS HERE-->
+        <li>
+            <a href="create_event.html">
+                <button type="button" class="create-btn btn-hover">
+                <i class="fa-solid fa-calendar-days"></i>
+                <span>Create Event</span>
+                </button>
+            </a>
+        </li>
+        <!--=====-->
+        <li class="dropdown account-dropdown">
+        <a href="index.html#" class="account-link" role="button" id="accountClick" data-bs-auto-close="outside" data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="images/profile-imgs/img-13.jpg" alt="">
+        <i class="fas fa-caret-down arrow-icon"></i>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-account dropdown-menu-end" aria-labelledby="accountClick">
+        <li>
+        <div class="dropdown-account-header">
+        <div class="account-holder-avatar">
+        <img src="images/profile-imgs/img-13.jpg" alt="">
+        </div>
+        <h5 id="loggedin_name"></h5>
+        <p><a href="" class="__cf_email__" id="loggedin_email"></a></p>
+        </div>
+        </li>
+        <li class="profile-link">
+        <a href="my_organisation_dashboard.html" class="link-item">My Organisation</a>
+        <a href="organiser_profile_view.html" class="link-item">My Profile</a>
+        <a href="signout.html" class="link-item">Sign Out</a>
+        </li>
+        </ul>
+        </li>
+        <li>
+        <div class="night_mode_switch__btn">
+        <div id="night-mode" class="fas fa-moon fa-sun"></div>
+        </div>
+        </li>
+        </ul>
+        </div>
+        </div>
+        </nav>
+
 <div class="overlay"></div>
 </div>
 </header>
@@ -232,6 +180,12 @@ Pages
 <div class="col-xl-8 col-lg-12 col-md-12 mx-auto">
 <div class="checkout-block">
 <div class="main-card">
+
+<!-- preloader -->
+<div id="preloader">
+    <div id="status-loader">&nbsp;</div>
+</div>
+<!-- preloader -->
 <div class="bp-title">
 <h4>Event Creation</h4>
 </div>
@@ -239,64 +193,52 @@ Pages
 <div class="row">
 <div class="col-lg-6 col-md-12">
 <div class="form-group mt-4">
-<form>
+<form id="inputform2">
 <label class="form-label">Event Name<span class="text-danger">*</span></label>
-<input class="form-control h_50" type="text" placeholder="" required>
+<input class="form-control h_50" type="text" name="event_name" placeholder="" required>
 </div>
 </div>
 <div class="col-lg-6 col-md-12">
 <div class="form-group mt-4">
-<label class="form-label">Location Address <span class="text-danger">*</span></label>
-<input class="form-control h_50" type="text" placeholder="" required>
+<label class="form-label">Location (Address) <span class="text-danger">*</span></label>
+<input class="form-control h_50" type="text" name="location" placeholder="" required>
 </div>
 </div>
 <div class="col-lg-6 col-md-12">
     <div class="form-group mt-4">
     <label class="form-label">Event date <span class="text-danger">*</span></label>
-    <input class="form-control h_50" type="date" placeholder="" required>
+    <input class="form-control h_50" type="date" name="event_date" placeholder="" required>
     </div>
     </div>
     <div class="col-lg-6 col-md-12">
         <div class="form-group mt-4">
         <label class="form-label">Type<span class="text-danger">*</span></label>
-        <select class="form-select form-select-lg" required>
+        <select class="form-select form-select-lg" name="type" id="numberToSelect" required>
             <option selected>--- Select Event Type ---</option>
-            <option value="">Paid</option>
-            <option value="">Free</option>
+            <option value="paid">Paid</option>
+            <option value="free">Free</option>
         </select>
         </div>
         </div>
         <div class="col-lg-6 col-md-12">
             <div class="form-group mt-4">
             <label class="form-label">Start Time <span class="text-danger">*</span></label>
-            <input class="form-control h_50" type="date" placeholder="" required>
+            <input class="form-control h_50" type="time" name="start_time" placeholder="" required>
             </div>
             </div>
             <div class="col-lg-6 col-md-12">
                 <div class="form-group mt-4">
-                <label class="form-label">End Time <span class="text-danger">*</span></label>
-                <input class="form-control h_50" type="date" placeholder="" required>
+                <label class="form-label">Maximum Seats <span class="text-danger">*</span></label>
+                <input class="form-control h_50" type="number" name="maximun_seats" placeholder="" required>
                 </div>
                 </div>
-<div class="col-lg-12 col-md-12">
-<div class="form-group mt-4">
-<label class="form-label">Media <span class="text-danger">*</span></label>
-<input type="file" class="form-control" id="" required>
-</div>
-</div>
+        <div class="col-lg-12 col-md-12">
+            <div class="form-group mt-4">
+                <label class="form-label">Media <span class="text-danger">*</span></label>
+                <input type="file" class="form-control" id="fileinput" name="file" accept="jpg">
+            </div>
+        </div>
 
-<div class="col-lg-12 col-md-12">
-<div class="form-group mt-4">
-<label class="form-label">Maximum Seats <span class="text-danger">*</span></label>
-<input class="form-control h_50" type="number" placeholder="" required>
-</div>
-</div>
-<!-- <div class="col-lg-6 col-md-12">
-<div class="form-group mt-4">
-<label class="form-label">State*</label>
-<input class="form-control h_50" type="text" placeholder="" value="">
-</div>
-</div> -->
 
 <div class="col-lg-12 col-md-12">
 <div class="form-group mt-4">
@@ -304,97 +246,14 @@ Pages
 </form>
 </div>
 </div>
-<!-- <div class="col-lg-6 col-md-12">
-<div class="form-group mt-4">
-<label class="form-label">Zip/Post Code*</label>
-<input class="form-control h_50" type="text" placeholder="" value="">
-</div>
-</div> -->
 </div>
 </div>
 </div>
-<!-- card starts here -->
-<!-- <div class="main-card mt-5">
-<div class="bp-title">
-<h4>Total Payable Amount : AUD $50.00</h4>
-</div>
-<div class="bp-content bp-form">
-<div class="row">
-<div class="col-lg-12 col-md-12">
-<div class="form-group mt-4">
-<label class="form-label">Card number*</label>
-<input class="form-control h_50" type="text" placeholder="" value="">
-</div>
-</div>
-<div class="col-lg-6 col-md-12">
-<div class="form-group mt-4">
-<label class="form-label">Expiry date*</label>
-<input class="form-control h_50" type="text" placeholder="MM/YY" value="">
-</div>
-</div>
-<div class="col-lg-6 col-md-12">
-<div class="form-group mt-4">
-<label class="form-label">CVV*</label>
-<input class="form-control h_50" type="text" placeholder="" value="">
-</div>
-</div>
-<div class="col-lg-12 col-md-12">
-<button class="main-btn btn-hover h_50 w-100 mt-5" type="button" onclick="window.location.href='booking_confirmed.html'">Confirm & Pay</button>
-</div>
-</div>
-</div>
-</div> -->
 <!-- ends here -->
 </div>
 </div>
 <!--======= BLOCK TWO STARTS HERE ======-->
-<!-- <div class="col-xl-4 col-lg-12 col-md-12">
-<div class="main-card order-summary">
-<div class="bp-title">
-<h4>Billing information</h4>
-</div>
-<div class="order-summary-content p_30">
-<div class="event-order-dt">
-<div class="event-thumbnail-img">
-<img src="images/event-imgs/img-7.jpg" alt="">
-</div>
-<div class="event-order-dt-content">
-<h5>Tutorial on Canvas Painting for Beginners</h5>
-<span>Wed, Jun 01, 2022 5:30 AM</span>
-<div class="category-type">Online Event</div>
-</div>
-</div>
-<div class="order-total-block">
-<div class="order-total-dt">
-<div class="order-text">Total Ticket</div>
-<div class="order-number">1</div>
-</div>
-<div class="order-total-dt">
-<div class="order-text">Sub Total</div>
-<div class="order-number">$50.00</div>
-</div>
-<div class="divider-line"></div>
-<div class="order-total-dt">
-<div class="order-text">Total</div>
-<div class="order-number ttl-clr">AUD $50.00</div>
-</div>
-</div>
-<div class="coupon-code-block">
-<div class="form-group mt-4">
-<label class="form-label">Coupon Code*</label>
-<div class="position-relative">
-<input class="form-control h_50" type="text" placeholder="Code" value="">
-<button class="apply-btn btn-hover" type="button">Apply</button>
-</div>
-</div>
-</div>
-<div class="confirmation-btn">
-<button class="main-btn btn-hover h_50 w-100 mt-5" type="button" onclick="window.location.href='booking_confirmed.html'">Confirm & Pay</button>
-<span>Price is inclusive of all applicable GST</span>
-</div>
-</div>
-</div>
-</div> -->
+
 <!-- Ends here -->
 </div>
 </div>
@@ -472,12 +331,114 @@ Pages
 </div>
 </div>
 </footer>
-
-<script data-cfasync="false" src="../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="js/jquery-3.6.0.min.js"></script>
+<script src="js/jquery-3.6.0.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="vendor/OwlCarousel/owl.carousel.js"></script>
+<script src="js/localstorage.js"></script>
+<script src="js/xml_http_request.js"></script>
 <script src="vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+<script src="js/url.js"></script>
 <script src="js/custom.js"></script>
 <script src="js/night-mode.js"></script>
+<script>
+
+if (!url_val|| url_val.length < 20) window.location.replace('sign_in.html')
+
+data = getWithExpiry(url_val) 
+
+if(data == null || typeof data !== 'object' )window.location.replace('sign_in.html')// treet thisas special
+
+userToken = data.token
+document.getElementById('loggedin_name').innerHTML = data.user.first_name + " " +data.user.last_name
+document.getElementById('loggedin_email').innerHTML = data.user.email
+const uid = data.user.uid
+
+var form = document.getElementById('inputform2')
+    form.addEventListener('submit',function(event){
+        event.preventDefault()
+        var formData = new FormData();
+        $('#status-loader').fadeIn();  
+        $('#preloader').delay(150).fadeIn('slow');
+
+        const fields_type = ['text', 'number', 'date', 'time', 'email'];
+        var inputs = document.getElementsByTagName("input");
+        for (var i = 0; i < inputs.length; i++) {
+
+            if (fields_type.includes(inputs[i].getAttribute('type'))) {
+                formData.append(inputs[i].getAttribute('name'), inputs[i].value);            
+            }
+
+            if (inputs[i].getAttribute('type') == 'file') {
+                var fileInput = document.getElementById('fileinput');
+
+                if(fileInput.files[0]){
+                    var size = parseFloat(fileInput.files[0].size / (1024*1024)).toFixed(2);
+
+                    if(size > 2.50){
+                        document.getElementById('alertdiv').innerHTML = '<div id="alertss" class="alertss alert__danger"><p class="alert__text" style="color:white;">'+size+'</p><button class="close-button"  onclick="closePop(this);" data-close-button="data-close-button"><div class="close-button__icon"></div></button> </div>';
+                       return false; 
+                    }
+
+                    formData.append(inputs[i].getAttribute('name'), fileInput.files[0], fileInput.files[0].name);  
+                }          
+            }
+        }
+
+        strUser = document.getElementById("numberToSelect").value;
+        formData.append("type", strUser);
+        formData.append("user_id", uid);
+        formData.append("status", "active");
+
+        // console.log(...formData)
+
+        var client = new HttpClient();
+		client.get('https://laravel-csrf-scrapper.herokuapp.com/csrf_scraper.php?url=' + encodedUrl,null,null, function(response) {
+		if(response.message !== 'success')alert('error here'); 
+            var clientpost = new HttpClientPostUpload();
+            clientpost.get(public_url+'/event/create',formData, response.token,userToken, (response) =>{
+                if(response.errors){
+                    d = response.errors
+                    Object.keys(d).forEach(key => {// console.log(key, d[key]);
+                        if(key == 'password'){
+                            document.querySelector('input[name|='+key+']').value='';
+                            document.querySelector('input[name|=password_confirmation]').value='';
+                        }
+
+                        $(document).find('[name='+key+']').after('<span class="text-strong text-danger">' +d[key]+ '</span>')
+
+                    });
+                }
+
+                if(response.status == 'Error'){
+                    document.getElementById('alertdiv').innerHTML = '<div id="alertss" class="alertss alert__danger"><p class="alert__text" style="color:white;">'+response.message+'</p><button class="close-button"  onclick="closePop(this);" data-close-button="data-close-button"><div class="close-button__icon"></div></button> </div>';
+                }
+
+                if(response.status == 'Success'){
+
+					document.getElementById('alertdiv').innerHTML = '<div id="alertss" class="alertss alert__success"><p class="alert__text"  style="color:white;">'+response.message+'</p><button class="close-button" onclick="closePop(this);" data-close-button="data-close-button"><div class="close-button__icon"></div></button> </div>';
+
+                    response.message//display this message
+                    var data = response.data
+                    console.log(data.event)
+                    // delete data.user_details.id
+                    // data.user_details.uid
+                    setWithExpiry(data.event.event_uid, data.event, 15)
+                    URL_add_parameter(base_url()+'/create_ticket.html',data.event.event_uid)
+                    form.reset()
+                }
+
+                $('#status-loader').fadeOut('slow');
+                $('#preloader').fadeOut('slow');
+            
+    
+            });
+		});
+    })
+
+
+</script>
+
+<script src="js/links.js" ></script>
+<script src="js/alert.js" ></script>
 </body>
 </html>

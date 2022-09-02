@@ -248,6 +248,37 @@ Explore Events
 <!--====================-->
 <div class="row" data-ref="event-filter-content" id="listing-events">
 
+
+
+	<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mix arts concert workshops volunteer sports health_Wellness" data-ref="mixitup-target">
+		<div class="main-card mt-4">
+			<div class="event-thumbnail">
+				<a href="event_detail.html" class="thumbnail-img">
+				<img src="https://event-reservation-system.herokuapp.com/storage/file/random0293ke3.jpg" alt="">
+				</a>
+			</div>
+			<div class="event-content">
+				<a href="event_detail.html" class="event-title">Free Buffet</a>
+				<div class="duration-price-remaining">
+					<span class="duration-price">Free*</span>
+					<span class="remaining"></span>
+				</div>
+			</div>
+			<div class="event-footer">
+				<div class="event-timing">
+					<div class="publish-date">
+						<span><i class="fa-solid fa-calendar-day me-2"></i>3 Aug</span>
+						<span class="dot"><i class="fa-solid fa-circle"></i></span>
+						<span>Wed, 3.00 PM</span>
+					</div>
+				<span class="publish-time"><i class="fa-solid fa-clock me-2"></i>1h+</span>
+				</div>
+			</div>
+		</div>
+		</div>
+
+
+
 	<div id="preloader">
 		<div id="status-loader">&nbsp;</div>
 	</div>
@@ -372,10 +403,10 @@ Explore Events
 		
 
 		var client = new HttpClient();
-		client.get('https://laravel-csrf-scrapper.herokuapp.com/csrf_scraper.php?url=' + encodedUrl,null,null, function(response) {
-		if(response.message !== 'success')alert('error here'); 
+		// client.get('https://laravel-csrf-scrapper.herokuapp.com/csrf_scraper.php?url=' + encodedUrl,null,null, function(response) {
+		// if(response.message !== 'success')alert('error here'); response.token
 
-			client.get(public_url+'/all-events', response.token,null, (response) =>{
+			client.get(public_url+'/all-events', csfr_gen, null, (response) =>{
 				if(response.status == 'Success'){
 
 					if(response.data.events === null || response.data.events.length == 0) {
@@ -411,11 +442,13 @@ Explore Events
 					document.getElementById('alertdiv').innerHTML = '<div id="alertss" class="alertss alert__danger"><p class="alert__text" style="color:white;">'+response.message+'</p><button class="close-button"  onclick="closePop(this);" data-close-button="data-close-button"><div class="close-button__icon"></div></button> </div>';
 				}
 
+
+				$('#status-loader').delay(100).fadeOut();
+				$('#preloader').delay(100).fadeOut('slow');
+				$('body').delay(50).css({'overflow':'visible'});
 			});
 
-		});
-		$('#status-loader').delay(2000).fadeOut();
-		$('#preloader').delay(2200).fadeOut('slow');
+		// });
 		
 	</script>
     <script src="js/links.js" ></script>

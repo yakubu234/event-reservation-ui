@@ -17,6 +17,7 @@
 <link href="css/style.css" rel="stylesheet">
 <link href="css/responsive.css" rel="stylesheet">
 <link href="css/night-mode.css" rel="stylesheet">
+<link href="css/alert.css" rel="stylesheet">
 
 <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
 <link href="vendor/OwlCarousel/assets/owl.carousel.css" rel="stylesheet">
@@ -25,7 +26,7 @@
 <link href="vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
 </head>
 <body class="d-flex flex-column h-100">
-
+    <div class="alertdiv" id="alertdiv" ></div><!--alert div is here -->
 <header class="header">
 <div class="header-inner">
 <nav class="navbar navbar-expand-lg bg-barren barren-head navbar fixed-top justify-content-sm-start pt-0 pb-0">
@@ -62,32 +63,15 @@
 </a>
 </div>
 </div>
-<ul class="navbar-nav justify-content-end flex-grow-1 pe_5">
+<ul class="navbar-nav justify-content-center flex-grow-1 pe_5">
 <li class="nav-item">
 <a class="nav-link active" aria-current="page" href="index.html">Home</a>
 </li>
-<!-- <li class="nav-item dropdown">
-<a class="nav-link dropdown-toggle" href="index.html#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-Explore Events
-</a>
-<ul class="dropdown-menu dropdown-submenu">
-<li><a class="dropdown-item" href="explore_events.html">Explore Events</a></li>
-<li><a class="dropdown-item" href="event_detail.html">Venue Event Detail View</a></li>
-<li><a class="dropdown-item" href="online_event_detail_view.html">Online Event Detail View</a></li>
-</ul>
-</li> -->
+
 <li class="nav-item">
 <a class="nav-link" href="create_ticket.html">create Ticket</a>
 </li>
-<!-- <li class="nav-item dropdown">
-<a class="nav-link dropdown-toggle" href="index.html#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-Blog
-</a>
-<ul class="dropdown-menu dropdown-submenu">
-<li><a class="dropdown-item" href="our_blog.html">Our Blog</a></li>
-<li><a class="dropdown-item" href="blog_detail_view.html">Blog Detail View</a></li>
-</ul>
-</li> -->
+
 <li class="nav-item dropdown">
 <a class="nav-link dropdown-toggle" href="index.html#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 Help
@@ -98,50 +82,7 @@ Help
 <li><a class="dropdown-item" href="contact_us.html">Contact Us</a></li>
 </ul>
 </li>
-<!-- <li class="nav-item dropdown">
-<a class="nav-link dropdown-toggle" href="index.html#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-Pages
-</a>
-<ul class="dropdown-menu dropdown-submenu">
-<li>
-<a class="dropdown-item submenu-item" href="index.html#">Other Pages</a>
-<ul class="submenu dropdown-menu">
-<li><a class="dropdown-item pe-5" href="sign_in.html">Sign In</a></li>
-<li><a class="dropdown-item pe-5" href="sign_up.html">Sign Up</a></li>
-<li><a class="dropdown-item pe-5" href="forgot_password.html">Forgot Password</a></li>
-<li><a class="dropdown-item pe-5" href="about_us.html">About Us</a></li>
-<li><a class="dropdown-item pe-5" href="checkout.html">Checkout</a></li>
-<li><a class="dropdown-item pe-5" href="checkout_premium.html">Checkout Premium</a></li>
-<li><a class="dropdown-item pe-5" href="invoice.html">Invoice</a></li>
-<li><a class="dropdown-item pe-5" href="coming_soon.html">Coming Soon</a></li>
-<li><a class="dropdown-item pe-5" href="error_404.html">Error 404</a></li>
-</ul>
-</li>
-<li>
-<a class="dropdown-item submenu-item" href="index.html#">Create Event</a>
-<ul class="submenu dropdown-menu">
-<li><a class="dropdown-item pe-5" href="create.html">Create</a></li>
-<li><a class="dropdown-item pe-5" href="create_venue_event.html">Create Venue Event</a></li>
-<li><a class="dropdown-item pe-5" href="create_online_event.html">Create Online Event</a></li>
-</ul>
-</li>
-<li>
-<a class="dropdown-item submenu-item" href="index.html#">Events View</a>
-<ul class="submenu dropdown-menu">
-<li><a class="dropdown-item pe-5" href="online_event_detail_view.html">Online Event Detail View</a></li>
-<li><a class="dropdown-item pe-5" href="event_detail.html">Venue Event Detail View</a></li>
-</ul>
-</li>
-<li><a class="dropdown-item" href="booking_confirmed.html">Booking Confirmed</a></li>
-<li><a class="dropdown-item" href="attendee_profile_view.html">Attendee Profile View</a></li>
-<li><a class="dropdown-item" href="organiser_profile_view.html">Organiser Profile View</a></li>
-<li><a class="dropdown-item" href="my_organisation_dashboard.html">Organization Dashboard</a></li>
-<li><a class="dropdown-item" href="sell_tickets_online.html">Sell Tickets Online</a></li>
-<li><a class="dropdown-item" href="refer_a_friend.html">Refer a Friend</a></li>
-<li><a class="dropdown-item" href="term_and_conditions.html">Terms & Conditions</a></li>
-<li><a class="dropdown-item" href="privacy_policy.html">Privacy Policy</a></li>
-</ul>
-</li> -->
+
 
 </ul>
 </div>
@@ -188,7 +129,7 @@ Pages
 <li class="profile-link">
 <a href="my_organisation_dashboard.html" class="link-item">My Organisation</a>
 <a href="organiser_profile_view.html" class="link-item">My Profile</a>
-<a href="sign_in.html" class="link-item">Sign Out</a>
+<a href="signout.html" class="link-item">Sign Out</a>
 </li>
 </ul>
 </li>
@@ -231,19 +172,16 @@ Pages
 <div class="col-xl-12 col-lg-12 col-md-12">
 <div class="event-filter-items">
 <div class="featured-controls">
-    <!-- i commented this area -->
+<!-- i commented this area -->
 
-<div class="row" data-ref="event-filter-content">
+<div class="row" data-ref="event-filter-content" >
+    <div  id="listing-events"></div>
 <!-- main card one starts here -->
+<!-- preloader -->
 <div id="preloader">
-	<div id="status-loader">&nbsp;</div>
+    <div id="status-loader">&nbsp;</div>
 </div>
-
-<div id="display-response">
-
-</div>
-
-
+<!-- preloader -->
 <!-- main card five starts here -->
 
 <!-- div row ends here -->
@@ -251,9 +189,8 @@ Pages
 
 <div class="browse-btn mt-5 mb-5" id="browse-btn" style="display:none">
 <a href="explore_events.html" class="main-btn btn-hover ">Browse All</a>
+<!-- explore more events -->
 </div>
-
-
 </div>
 
 
@@ -410,60 +347,6 @@ Pages
 </div>
 
 <!-- our organization block starts here -->
-<!-- <div class="our-organisations-block p-80">
-<div class="container">
-<div class="row">
-<div class="col-lg-12">
-<div class="main-title text-center">
-<h3>321+ events created by thousands of organisations around the globe</h3>
-</div>
-</div>
-<div class="col-lg-12">
-<div class="organisations-area">
-<div class="owl-carousel organisations-slider owl-theme">
-<div class="item">
-<div class="sponsor">
-<a href="index.html#"><img src="images/icons/sponsor-1.png" alt=""></a>
-</div>
-</div>
-<div class="item">
-<div class="sponsor">
-<a href="index.html#"><img src="images/icons/sponsor-2.png" alt=""></a>
-</div>
-</div>
-<div class="item">
-<div class="sponsor">
-<a href="index.html#"><img src="images/icons/sponsor-3.png" alt=""></a>
-</div>
-</div>
-<div class="item">
-<div class="sponsor">
-<a href="index.html#"><img src="images/icons/sponsor-4.png" alt=""></a>
-</div>
-</div>
-<div class="item">
-<div class="sponsor">
-<a href="index.html#"><img src="images/icons/sponsor-5.png" alt=""></a>
-</div>
-</div>
-<div class="item">
-<div class="sponsor">
-<a href="index.html#"><img src="images/icons/sponsor-6.png" alt=""></a>
-</div>
-</div>
-<div class="item">
-<div class="sponsor">
-<a href="index.html#"><img src="images/icons/sponsor-7.png" alt=""></a>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div> -->
-
 
 <footer class="footer mt-auto">
 <div class="footer-top">
@@ -536,7 +419,7 @@ Pages
 </div>
 </footer>
 
-<script data-cfasync="false" src="../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="js/jquery-3.6.0.min.js"></script>
+<script src="js/jquery-3.6.0.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="vendor/OwlCarousel/owl.carousel.js"></script>
 <script src="js/localstorage.js"></script>
@@ -547,6 +430,8 @@ Pages
 <script src="js/custom.js"></script>
 <script src="js/night-mode.js"></script>
 <script>	
+      $('#status-loader').fadeOut();
+	$('#preloader').fadeOut();
 		var containerEl = document.querySelector('[data-ref~="event-filter-content"]');
         var mixer = mixitup(containerEl, {
             selectors: {
@@ -565,37 +450,63 @@ Pages
     document.getElementById('loggedin_name').innerHTML = data.user.first_name + " " +data.user.last_name
     document.getElementById('loggedin_email').innerHTML = data.user.email
 
-        if(csfr_msg !== 'success')wait(3000)
-
         var client = new HttpClient();
+        $('#status-loader').delay(350).fadeIn();  
+        $('#preloader').delay(400).fadeIn('slow');
         client.get(public_url+'/event/my-events', csfr_gen,token, (response) =>{
 
             if(response.exception){
                 console.log(response.message)
+                document.getElementById('alertdiv').innerHTML = '<div id="alertss" class="alertss alert__danger"><p class="alert__text" style="color:white;">'+response.message+'</p><button class="close-button"  onclick="closePop(this);" data-close-button="data-close-button"><div class="close-button__icon"></div></button> </div>';
             }
 
             if(response.status == 'Error'){
-               alert(response.message)
+                document.getElementById('alertdiv').innerHTML = '<div id="alertss" class="alertss alert__danger"><p class="alert__text" style="color:white;">'+response.message+'</p><button class="close-button"  onclick="closePop(this);" data-close-button="data-close-button"><div class="close-button__icon"></div></button> </div>';
             }
 
             console.log(response.data.events)
             if(response.status == 'Success'){
 
                 if(response.data.events === null || response.data.events.length == 0) {
-                    document.getElementById("browse-btn").style.display = "block";
-                    document.getElementById('display-response').innerHTML = "You have no Event Records"
+                    document.getElementById('alertdiv').innerHTML = '<div id="alertss" class="alertss alert__danger"><p class="alert__text" style="color:white;">You have no Event Records</p><button class="close-button"  onclick="closePop(this);" data-close-button="data-close-button"><div class="close-button__icon"></div></button> </div>';
+                    
                 }
                 
                 if(response.data.events.length > 0){
-                    document.getElementById('display-response').innerHTML = '<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mix arts concert workshops volunteer sports health_Wellness" data-ref="mixitup-target"> <div class="main-card mt-4"> <div class="event-thumbnail"> <a href="event_detail.html" class="thumbnail-img"> <img src="images/event-imgs/img-1.jpg" alt="">  </a> </div> <div class="event-content"> <a href="event_detail.html" class="event-title">Free Buffet</a> <div class="duration-price-remaining"> <span class="duration-price">Free*</span>  <span class="remaining"></span> </div> </div> <div class="event-footer"> <div class="event-timing"> <div class="publish-date"> <span><i class="fa-solid fa-calendar-day me-2"></i>3 Aug</span> <span class="dot"><i class="fa-solid fa-circle"></i></span>  <span>Wed, 3.00 PM</span>  </div> <span class="publish-time"><i class="fa-solid fa-clock me-2"></i>1h+</span> </div></div></div></div>'
+                    document.getElementById('alertdiv').innerHTML = '<div id="alertss" class="alertss alert__success"><p class="alert__text"  style="color:white;">'+response.message+'</p><button class="close-button" onclick="closePop(this);" data-close-button="data-close-button"><div class="close-button__icon"></div></button> </div>';
+
+                    d = response.data.events
+					Object.keys(d).forEach(key => {// console.log(key, d[key]);
+                        console.log(key)
+                        console.log(d[key].event_uid)
+                        console.log(d[key].location)
+                        console.log(d[key].start_time)
+                        console.log(d[key].media_file)
+                        console.log(d[key].type)
+                        console.log(d[key].maximun_seats)
+                        // console.log(d[key].total_reservation)
+                        console.log(d[key])
+                        console.log('new line')
+
+
+
+                    document.getElementById('listing-events').innerHTML +='<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mix arts concert workshops volunteer sports health_Wellness" data-ref="mixitup-target"> <div class="main-card mt-4"> <div class="event-thumbnail"> <a href="event_detail.html" class="thumbnail-img"> <img src="images/event-imgs/img-1.jpg" alt="">  </a> </div> <div class="event-content"> <a href="event_detail.html" class="event-title">'+d[key].event_name+'</a> <div class="duration-price-remaining"> <span class="duration-price">Free*</span>  <span class="remaining"></span> </div> </div> <div class="event-footer"> <div class="event-timing"> <div class="publish-date"> <span><i class="fa-solid fa-calendar-day me-2"></i>'+d[key].event_date+'</span> <span class="dot"><i class="fa-solid fa-circle"></i></span>  <span></span>  </div> <span class="publish-time"><i class="fa-solid fa-clock me-2"></i>'+ d[key].start_time +'</span> </div></div></div></div>';
+                    });
+                    
+                    document.getElementById("browse-btn").style.display = "block";
                    
                 }
             }
 
-
+            $('#status-loader').fadeOut();
+            $('#preloader').delay(100).fadeOut('slow');
+            $('body').delay(20).css({'overflow':'visible'});
         });
+
+        
 
 	</script>
     <script src="js/links.js" ></script>
+    <script src="js/alert.js" ></script>
 </body>
 </html>
